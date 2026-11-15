@@ -1941,3 +1941,339 @@ button {
     justify-content: center;
   }
 }
+
+.pronouns-page {
+  width: 100%;
+  padding: 10px 0 30px;
+}
+
+.pronouns-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.pronouns-heading h1 {
+  margin: 8px 0;
+  font-size: 30px;
+  color: #39334c;
+}
+
+.pronouns-heading p {
+  color: #898397;
+}
+
+.pronouns-heading-icon {
+  width: 70px;
+  height: 70px;
+  display: grid;
+  place-items: center;
+  border-radius: 22px;
+  background: #eee9ff;
+  color: #8b78c7;
+}
+
+.pronouns-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.pronouns-tabs button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border: 1px solid #e9e5f0;
+  border-radius: 12px;
+  background: white;
+  color: #777184;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.pronouns-tabs button.active {
+  background: #8b78c7;
+  color: white;
+  border-color: #8b78c7;
+}
+
+.pronouns-section,
+.pronouns-quiz {
+  padding: 24px;
+  background: white;
+  border: 1px solid #eeeaf4;
+  border-radius: 18px;
+}
+
+.pronouns-section h2,
+.pronouns-quiz h2 {
+  margin: 0 0 8px;
+  color: #39334c;
+}
+
+.pronouns-section > p,
+.pronouns-quiz > p {
+  color: #898397;
+  margin-bottom: 22px;
+}
+
+.pronouns-layout {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.8fr) minmax(250px, 1.5fr);
+  gap: 20px;
+}
+
+.pronouns-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.pronouns-list button {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 13px;
+  border: 1px solid #eeeaf4;
+  border-radius: 12px;
+  background: #faf9fc;
+  text-align: left;
+  cursor: pointer;
+}
+
+.pronouns-list button strong {
+  color: #514477;
+  font-size: 19px;
+}
+
+.pronouns-list button span {
+  color: #898397;
+  font-size: 12px;
+}
+
+.pronouns-list button.selected {
+  border-color: #9b87d3;
+  background: #f1edff;
+}
+
+.pronoun-detail {
+  padding: 25px;
+  border-radius: 16px;
+  background: #f8f6ff;
+}
+
+.pronoun-large {
+  display: inline-block;
+  color: #806bc0;
+  font-size: 42px;
+  font-weight: 800;
+}
+
+.pronoun-detail h3 {
+  margin: 5px 0;
+  color: #39334c;
+  font-size: 23px;
+}
+
+.pronoun-detail > p {
+  color: #898397;
+  line-height: 1.6;
+}
+
+.pronoun-example {
+  padding: 15px;
+  margin: 18px 0;
+  background: white;
+  border-radius: 12px;
+}
+
+.pronoun-example strong {
+  color: #514477;
+  font-size: 18px;
+}
+
+.pronoun-example p {
+  color: #898397;
+  margin-bottom: 0;
+}
+
+.pronoun-audio,
+.pronoun-example-card button {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 10px;
+  background: #8b78c7;
+  color: white;
+  cursor: pointer;
+}
+
+.pronouns-note {
+  padding: 18px;
+  margin-top: 22px;
+  border-radius: 14px;
+  background: #fff8e9;
+  color: #65563c;
+  line-height: 1.7;
+}
+
+.pronouns-note p {
+  margin: 7px 0 0;
+}
+
+.pronoun-examples-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 13px;
+}
+
+.pronoun-example-card {
+  padding: 17px;
+  border: 1px solid #eeeaf4;
+  border-radius: 14px;
+  background: #faf9fc;
+}
+
+.pronoun-example-card > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pronoun-example-card > div span {
+  display: grid;
+  place-items: center;
+  min-width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  background: #eee9ff;
+  color: #806bc0;
+  font-weight: 700;
+}
+
+.pronoun-example-card strong {
+  color: #514477;
+}
+
+.pronoun-example-card p {
+  color: #898397;
+  margin: 12px 0;
+}
+
+.pronouns-quiz {
+  max-width: 750px;
+}
+
+.pronouns-quiz h3 {
+  color: #39334c;
+  margin-bottom: 18px;
+}
+
+.pronouns-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.pronouns-options button {
+  padding: 15px;
+  border: 1px solid #e9e5f0;
+  border-radius: 12px;
+  background: #faf9fc;
+  color: #514b60;
+  cursor: pointer;
+  text-align: left;
+  font-weight: 600;
+}
+
+.pronouns-options button:disabled {
+  cursor: default;
+  opacity: 1;
+}
+
+.pronouns-options button.correct {
+  background: #e8f7ed;
+  border-color: #72bd8c;
+  color: #287b46;
+}
+
+.pronouns-options button.incorrect {
+  background: #fff0ef;
+  border-color: #e69b95;
+  color: #b54e48;
+}
+
+.pronouns-feedback {
+  margin-top: 20px;
+  padding: 17px;
+  border-radius: 13px;
+  background: #f5f2ff;
+  color: #514b60;
+}
+
+.pronouns-feedback p {
+  margin: 8px 0 15px;
+}
+
+.pronouns-feedback button,
+.pronouns-result button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 18px;
+  border: none;
+  border-radius: 10px;
+  background: #8b78c7;
+  color: white;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.pronouns-result {
+  padding: 30px 10px;
+  text-align: center;
+  color: #8b78c7;
+}
+
+.pronouns-result h2 {
+  margin-top: 15px;
+}
+
+.pronouns-result p {
+  color: #898397;
+  margin: 10px 0;
+}
+
+.pronouns-result button {
+  margin-top: 15px;
+}
+
+@media (max-width: 650px) {
+  .pronouns-heading h1 {
+    font-size: 23px;
+  }
+
+  .pronouns-section,
+  .pronouns-quiz {
+    padding: 16px;
+  }
+
+  .pronouns-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .pronouns-options {
+    grid-template-columns: 1fr;
+  }
+
+  .pronouns-tabs button {
+    flex: 1 1 40%;
+    justify-content: center;
+  }
+}
