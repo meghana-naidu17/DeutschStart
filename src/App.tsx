@@ -1,122 +1,496 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+
+import { useState } from "react";
+
+import {
+  BookOpen,
+  LayoutDashboard,
+  GraduationCap,
+  Languages,
+  Headphones,
+  Mic,
+  BookMarked,
+  Trophy,
+  Flame,
+  Search,
+  Bell,
+  Settings,
+  Menu,
+  X,
+  ChevronRight,
+  Clock,
+  Play,
+  Target,
+  Sparkles
+} from "lucide-react";
+
+import { lessons, categories } from "./data/course";
+import AlphabetLesson from "./components/AlphabetLesson";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [activePage, setActivePage] = useState("Dashboard");
+  const [search, setSearch] = useState("");
+  const [mobileMenu, setMobileMenu] = useState(false);
+  const [completed, setCompleted] = useState<number[]>([]);
+  const [alphabetCompleted, setAlphabetCompleted] = useState(false);
+
+  const navigation = [
+    { name: "Dashboard", icon: LayoutDashboard },
+    { name: "Learning Path", icon: GraduationCap },
+    { name: "Alphabet", icon: Languages },
+    { name: "Grammar", icon: BookOpen },
+    { name: "Vocabulary", icon: Languages },
+    { name: "Listening", icon: Headphones },
+    { name: "Speaking", icon: Mic },
+    { name: "Reading", icon: BookMarked }
+  ];
+
+  const filteredLessons = lessons.filter((lesson) => {
+    const matchesSearch = lesson.title
+      .toLowerCase()
+      .includes(search.toLowerCase());
+
+    const matchesPage =
+      activePage === "Dashboard" ||
+      activePage === "Learning Path" ||
+      lesson.category === activePage;
+
+    return matchesSearch && matchesPage;
+  });
+
+  const toggleComplete = (id: number) => {
+    setCompleted((previous) =>
+      previous.includes(id)
+        ? previous.filter((item) => item !== id)
+        : [...previous, id]
+    );
+  };
+
+  const totalCompleted =
+    completed.length + (alphabetCompleted ? 1 : 0);
+
+  const totalLessons = lessons.length + 1;
+
+  const progress = Math.round(
+    (totalCompleted / totalLessons) * 100
+  );
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <div className="app-container">
 
-      <div className="ticks"></div>
+      <aside className={`sidebar ${mobileMenu ? "sidebar-open" : ""}`}>
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+        <div className="brand">
+          <div className="brand-icon">D</div>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+          <div>
+            <h2>DeutschStart</h2>
+            <span>Learn German with joy</span>
+          </div>
+
+          <button
+            className="mobile-close"
+            onClick={() => setMobileMenu(false)}
+          >
+            <X size={20} />
+          </button>
+        </div>
+
+        <div className="nav-label">LEARN</div>
+
+        <nav>
+          {navigation.map((item) => {
+            const Icon = item.icon;
+
+            return (
+              <button
+                key={item.name}
+                className={`nav-item ${
+                  activePage === item.name ? "active" : ""
+                }`}
+                onClick={() => {
+                  setActivePage(item.name);
+                  setMobileMenu(false);
+                  setSearch("");
+                }}
+              >
+                <Icon size={19} />
+                <span>{item.name}</span>
+              </button>
+            );
+          })}
+        </nav>
+
+        <div className="sidebar-bottom">
+
+          <div className="streak-card">
+            <span className="streak-emoji">🔥</span>
+
+            <div>
+              <strong>Start a streak!</strong>
+              <p>Learn a little every day.</p>
+            </div>
+          </div>
+
+          <button
+            className="nav-item"
+            onClick={() => {
+              setActivePage("Settings");
+              setMobileMenu(false);
+            }}
+          >
+            <Settings size={19} />
+            <span>Settings</span>
+          </button>
+
+        </div>
+      </aside>
+
+      <main className="main-content">
+
+        <header className="topbar">
+
+          <button
+            className="menu-button"
+            onClick={() => setMobileMenu(true)}
+          >
+            <Menu />
+          </button>
+
+          <div className="breadcrumb">
+            DeutschStart <ChevronRight size={15} /> {activePage}
+          </div>
+
+          <div className="topbar-right">
+
+            <div className="streak">
+              <Flame size={18} />
+              <span>0 days</span>
+            </div>
+
+            <button
+              className="icon-button"
+              aria-label="Notifications"
+            >
+              <Bell size={19} />
+            </button>
+
+            <div className="profile-avatar">M</div>
+
+          </div>
+        </header>
+
+        <div className="page-content">
+
+          {/* DASHBOARD */}
+
+          {activePage === "Dashboard" && (
+            <>
+              <section className="welcome-section">
+
+                <div>
+                  <span className="eyebrow">
+                    <Sparkles size={15} /> YOUR GERMAN JOURNEY
+                  </span>
+
+                  <h1>
+                    Hallo, learner! <span>🌷</span>
+                  </h1>
+
+                  <p>
+                    Every new word brings you closer to speaking German.
+                    Let's learn something today!
+                  </p>
+                </div>
+
+                <div className="welcome-decoration">
+                  Guten Tag!
+                </div>
+
+              </section>
+
+              <section className="hero-card">
+
+                <div className="hero-content">
+
+                  <span className="hero-tag">
+                    YOUR LEARNING JOURNEY
+                  </span>
+
+                  <h2>Start your German adventure!</h2>
+
+                  <p>
+                    Begin with the alphabet and gradually build your
+                    German language skills.
+                  </p>
+
+                  <button
+                    className="primary-button"
+                    onClick={() => setActivePage("Learning Path")}
+                  >
+                    Start Learning <ChevronRight size={18} />
+                  </button>
+
+                </div>
+
+                <div className="hero-illustration">🇩🇪</div>
+                <div className="hero-decoration">Hallo!</div>
+
+              </section>
+
+              <section className="stats-grid">
+
+                <div className="stat-card">
+
+                  <div className="stat-icon purple">
+                    <BookOpen />
+                  </div>
+
+                  <div>
+                    <span>Lessons completed</span>
+                    <h2>{totalCompleted}/{totalLessons}</h2>
+                  </div>
+
+                </div>
+
+                <div className="stat-card">
+
+                  <div className="stat-icon pink">
+                    <Trophy />
+                  </div>
+
+                  <div>
+                    <span>Learning points</span>
+                    <h2>{totalCompleted * 10} XP</h2>
+                  </div>
+
+                </div>
+
+                <div className="stat-card">
+
+                  <div className="stat-icon orange">
+                    <Flame />
+                  </div>
+
+                  <div>
+                    <span>Daily streak</span>
+                    <h2>0 days</h2>
+                  </div>
+
+                </div>
+
+              </section>
+
+              <section className="progress-card">
+
+                <div className="section-heading">
+
+                  <div>
+                    <h2>Your progress</h2>
+                    <p>Every small step counts!</p>
+                  </div>
+
+                  <strong>{progress}%</strong>
+
+                </div>
+
+                <div className="progress-track">
+                  <div
+                    className="progress-fill"
+                    style={{ width: `${progress}%` }}
+                  />
+                </div>
+
+                <p className="progress-caption">
+                  {totalCompleted} of {totalLessons} sample lessons completed
+                </p>
+
+              </section>
+
+              <section className="section-block">
+
+                <div className="section-heading">
+
+                  <div>
+                    <h2>Explore learning</h2>
+                    <p>Choose what you want to practice.</p>
+                  </div>
+
+                </div>
+
+                <div className="category-grid">
+
+                  {categories.map((category) => (
+                    <button
+                      className="category-card"
+                      key={category.name}
+                      onClick={() => {
+                        setActivePage(category.name);
+                        setSearch("");
+                      }}
+                    >
+                      <span className="category-emoji">
+                        {category.icon}
+                      </span>
+
+                      <strong>{category.name}</strong>
+
+                      <span>{category.description}</span>
+                    </button>
+                  ))}
+
+                </div>
+
+              </section>
+            </>
+          )}
+
+          {/* ALPHABET LESSON */}
+
+          {activePage === "Alphabet" && (
+            <AlphabetLesson
+              onComplete={() => setAlphabetCompleted(true)}
+            />
+          )}
+
+          {/* SETTINGS */}
+
+          {activePage === "Settings" && (
+            <section className="welcome-section">
+
+              <div>
+                <span className="eyebrow">PREFERENCES</span>
+
+                <h1>Settings ⚙️</h1>
+
+                <p>
+                  Account and learning preferences will be available here.
+                </p>
+              </div>
+
+            </section>
+          )}
+
+          {/* OTHER LEARNING SECTIONS */}
+
+          {activePage !== "Dashboard" &&
+            activePage !== "Settings" &&
+            activePage !== "Alphabet" && (
+              <>
+
+                <section className="page-heading">
+
+                  <span className="eyebrow">
+                    DEUTSCHSTART • A1
+                  </span>
+
+                  <h1>{activePage}</h1>
+
+                  <p>
+                    Learn step by step. Understand, practice and improve.
+                  </p>
+
+                </section>
+
+                <div className="search-box">
+
+                  <Search size={19} />
+
+                  <input
+                    value={search}
+                    onChange={(event) => setSearch(event.target.value)}
+                    placeholder="Search lessons..."
+                  />
+
+                </div>
+
+                <div className="lesson-list">
+
+                  {filteredLessons.map((lesson) => (
+                    <article
+                      className="lesson-card"
+                      key={lesson.id}
+                    >
+
+                      <div className="lesson-emoji">
+                        {lesson.icon}
+                      </div>
+
+                      <div className="lesson-info">
+
+                        <span className="lesson-category">
+                          {lesson.category}
+                        </span>
+
+                        <h3>{lesson.title}</h3>
+
+                        <p>{lesson.subtitle}</p>
+
+                        <div className="lesson-meta">
+
+                          <span>
+                            <Clock size={14} /> {lesson.duration}
+                          </span>
+
+                          <span>
+                            <Target size={14} /> {lesson.level}
+                          </span>
+
+                        </div>
+
+                      </div>
+
+                      <button
+                        className={
+                          completed.includes(lesson.id)
+                            ? "complete-button completed"
+                            : "complete-button"
+                        }
+                        onClick={() => toggleComplete(lesson.id)}
+                      >
+                        {completed.includes(lesson.id)
+                          ? "Completed ✓"
+                          : "Start lesson"}
+
+                        {!completed.includes(lesson.id) && (
+                          <Play size={14} />
+                        )}
+
+                      </button>
+
+                    </article>
+                  ))}
+
+                  {filteredLessons.length === 0 && (
+                    <div className="empty-state">
+
+                      <Search size={30} />
+
+                      <h3>No lessons found</h3>
+
+                      <p>
+                        Try another search term.
+                      </p>
+
+                    </div>
+                  )}
+
+                </div>
+
+              </>
+            )}
+
+          <footer className="footer">
+            Made with <span>♥</span> for German learners everywhere.
+
+            <p>
+              DeutschStart • Learn a little. Grow a lot.
+            </p>
+          </footer>
+
+        </div>
+      </main>
+    </div>
+  );
 }
 
-export default App
+export default App;
