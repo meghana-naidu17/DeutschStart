@@ -20,23 +20,28 @@ import {
   Clock,
   Play,
   Target,
-  Sparkles
+  Sparkles,
+  MessageCircle
 } from "lucide-react";
 
 import { lessons, categories } from "./data/course";
 import AlphabetLesson from "./components/AlphabetLesson";
+import GreetingsLesson from "./components/GreetingsLesson";
 
 function App() {
   const [activePage, setActivePage] = useState("Dashboard");
   const [search, setSearch] = useState("");
   const [mobileMenu, setMobileMenu] = useState(false);
+
   const [completed, setCompleted] = useState<number[]>([]);
   const [alphabetCompleted, setAlphabetCompleted] = useState(false);
+  const [greetingsCompleted, setGreetingsCompleted] = useState(false);
 
   const navigation = [
     { name: "Dashboard", icon: LayoutDashboard },
     { name: "Learning Path", icon: GraduationCap },
     { name: "Alphabet", icon: Languages },
+    { name: "Greetings", icon: MessageCircle },
     { name: "Grammar", icon: BookOpen },
     { name: "Vocabulary", icon: Languages },
     { name: "Listening", icon: Headphones },
@@ -66,9 +71,11 @@ function App() {
   };
 
   const totalCompleted =
-    completed.length + (alphabetCompleted ? 1 : 0);
+    completed.length +
+    (alphabetCompleted ? 1 : 0) +
+    (greetingsCompleted ? 1 : 0);
 
-  const totalLessons = lessons.length + 1;
+  const totalLessons = lessons.length + 2;
 
   const progress = Math.round(
     (totalCompleted / totalLessons) * 100
@@ -80,6 +87,7 @@ function App() {
       <aside className={`sidebar ${mobileMenu ? "sidebar-open" : ""}`}>
 
         <div className="brand">
+
           <div className="brand-icon">D</div>
 
           <div>
@@ -93,11 +101,13 @@ function App() {
           >
             <X size={20} />
           </button>
+
         </div>
 
         <div className="nav-label">LEARN</div>
 
         <nav>
+
           {navigation.map((item) => {
             const Icon = item.icon;
 
@@ -118,17 +128,20 @@ function App() {
               </button>
             );
           })}
+
         </nav>
 
         <div className="sidebar-bottom">
 
           <div className="streak-card">
+
             <span className="streak-emoji">🔥</span>
 
             <div>
               <strong>Start a streak!</strong>
               <p>Learn a little every day.</p>
             </div>
+
           </div>
 
           <button
@@ -143,6 +156,7 @@ function App() {
           </button>
 
         </div>
+
       </aside>
 
       <main className="main-content">
@@ -177,6 +191,7 @@ function App() {
             <div className="profile-avatar">M</div>
 
           </div>
+
         </header>
 
         <div className="page-content">
@@ -185,9 +200,11 @@ function App() {
 
           {activePage === "Dashboard" && (
             <>
+
               <section className="welcome-section">
 
                 <div>
+
                   <span className="eyebrow">
                     <Sparkles size={15} /> YOUR GERMAN JOURNEY
                   </span>
@@ -200,6 +217,7 @@ function App() {
                     Every new word brings you closer to speaking German.
                     Let's learn something today!
                   </p>
+
                 </div>
 
                 <div className="welcome-decoration">
@@ -232,8 +250,13 @@ function App() {
 
                 </div>
 
-                <div className="hero-illustration">🇩🇪</div>
-                <div className="hero-decoration">Hallo!</div>
+                <div className="hero-illustration">
+                  🇩🇪
+                </div>
+
+                <div className="hero-decoration">
+                  Hallo!
+                </div>
 
               </section>
 
@@ -247,7 +270,9 @@ function App() {
 
                   <div>
                     <span>Lessons completed</span>
-                    <h2>{totalCompleted}/{totalLessons}</h2>
+                    <h2>
+                      {totalCompleted}/{totalLessons}
+                    </h2>
                   </div>
 
                 </div>
@@ -294,10 +319,12 @@ function App() {
                 </div>
 
                 <div className="progress-track">
+
                   <div
                     className="progress-fill"
                     style={{ width: `${progress}%` }}
                   />
+
                 </div>
 
                 <p className="progress-caption">
@@ -328,6 +355,7 @@ function App() {
                         setSearch("");
                       }}
                     >
+
                       <span className="category-emoji">
                         {category.icon}
                       </span>
@@ -335,12 +363,14 @@ function App() {
                       <strong>{category.name}</strong>
 
                       <span>{category.description}</span>
+
                     </button>
                   ))}
 
                 </div>
 
               </section>
+
             </>
           )}
 
@@ -352,29 +382,45 @@ function App() {
             />
           )}
 
+          {/* GREETINGS LESSON */}
+
+          {activePage === "Greetings" && (
+            <GreetingsLesson
+              onComplete={() => setGreetingsCompleted(true)}
+            />
+          )}
+
           {/* SETTINGS */}
 
           {activePage === "Settings" && (
+
             <section className="welcome-section">
 
               <div>
-                <span className="eyebrow">PREFERENCES</span>
+
+                <span className="eyebrow">
+                  PREFERENCES
+                </span>
 
                 <h1>Settings ⚙️</h1>
 
                 <p>
                   Account and learning preferences will be available here.
                 </p>
+
               </div>
 
             </section>
+
           )}
 
           {/* OTHER LEARNING SECTIONS */}
 
           {activePage !== "Dashboard" &&
             activePage !== "Settings" &&
-            activePage !== "Alphabet" && (
+            activePage !== "Alphabet" &&
+            activePage !== "Greetings" && (
+
               <>
 
                 <section className="page-heading">
@@ -397,7 +443,9 @@ function App() {
 
                   <input
                     value={search}
-                    onChange={(event) => setSearch(event.target.value)}
+                    onChange={(event) =>
+                      setSearch(event.target.value)
+                    }
                     placeholder="Search lessons..."
                   />
 
@@ -406,6 +454,7 @@ function App() {
                 <div className="lesson-list">
 
                   {filteredLessons.map((lesson) => (
+
                     <article
                       className="lesson-card"
                       key={lesson.id}
@@ -428,11 +477,13 @@ function App() {
                         <div className="lesson-meta">
 
                           <span>
-                            <Clock size={14} /> {lesson.duration}
+                            <Clock size={14} />
+                            {lesson.duration}
                           </span>
 
                           <span>
-                            <Target size={14} /> {lesson.level}
+                            <Target size={14} />
+                            {lesson.level}
                           </span>
 
                         </div>
@@ -447,6 +498,7 @@ function App() {
                         }
                         onClick={() => toggleComplete(lesson.id)}
                       >
+
                         {completed.includes(lesson.id)
                           ? "Completed ✓"
                           : "Start lesson"}
@@ -458,9 +510,11 @@ function App() {
                       </button>
 
                     </article>
+
                   ))}
 
                   {filteredLessons.length === 0 && (
+
                     <div className="empty-state">
 
                       <Search size={30} />
@@ -472,23 +526,31 @@ function App() {
                       </p>
 
                     </div>
+
                   )}
 
                 </div>
 
               </>
+
             )}
 
+          {/* FOOTER */}
+
           <footer className="footer">
+
             Made with <span>♥</span> for German learners everywhere.
 
             <p>
               DeutschStart • Learn a little. Grow a lot.
             </p>
+
           </footer>
 
         </div>
+
       </main>
+
     </div>
   );
 }
