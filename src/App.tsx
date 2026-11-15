@@ -21,12 +21,15 @@ import {
   Play,
   Target,
   Sparkles,
-  MessageCircle
+  MessageCircle,
+  CalendarDays
 } from "lucide-react";
 
 import { lessons, categories } from "./data/course";
+
 import AlphabetLesson from "./components/AlphabetLesson";
 import GreetingsLesson from "./components/GreetingsLesson";
+import NumbersDatesLesson from "./components/NumbersDatesLesson";
 
 function App() {
   const [activePage, setActivePage] = useState("Dashboard");
@@ -36,12 +39,14 @@ function App() {
   const [completed, setCompleted] = useState<number[]>([]);
   const [alphabetCompleted, setAlphabetCompleted] = useState(false);
   const [greetingsCompleted, setGreetingsCompleted] = useState(false);
+  const [numbersDatesCompleted, setNumbersDatesCompleted] = useState(false);
 
   const navigation = [
     { name: "Dashboard", icon: LayoutDashboard },
     { name: "Learning Path", icon: GraduationCap },
     { name: "Alphabet", icon: Languages },
     { name: "Greetings", icon: MessageCircle },
+    { name: "Numbers & Dates", icon: CalendarDays },
     { name: "Grammar", icon: BookOpen },
     { name: "Vocabulary", icon: Languages },
     { name: "Listening", icon: Headphones },
@@ -49,10 +54,23 @@ function App() {
     { name: "Reading", icon: BookMarked }
   ];
 
+  const totalCompleted =
+    completed.length +
+    (alphabetCompleted ? 1 : 0) +
+    (greetingsCompleted ? 1 : 0) +
+    (numbersDatesCompleted ? 1 : 0);
+
+  const totalLessons = lessons.length + 3;
+
+  const progress =
+    totalLessons === 0
+      ? 0
+      : Math.round((totalCompleted / totalLessons) * 100);
+
   const filteredLessons = lessons.filter((lesson) => {
-    const matchesSearch = lesson.title
-      .toLowerCase()
-      .includes(search.toLowerCase());
+    const matchesSearch =
+      lesson.title.toLowerCase().includes(search.toLowerCase()) ||
+      lesson.subtitle.toLowerCase().includes(search.toLowerCase());
 
     const matchesPage =
       activePage === "Dashboard" ||
@@ -70,24 +88,16 @@ function App() {
     );
   };
 
-  const totalCompleted =
-    completed.length +
-    (alphabetCompleted ? 1 : 0) +
-    (greetingsCompleted ? 1 : 0);
-
-  const totalLessons = lessons.length + 2;
-
-  const progress = Math.round(
-    (totalCompleted / totalLessons) * 100
-  );
+  const handleNavigation = (page: string) => {
+    setActivePage(page);
+    setMobileMenu(false);
+    setSearch("");
+  };
 
   return (
     <div className="app-container">
-
       <aside className={`sidebar ${mobileMenu ? "sidebar-open" : ""}`}>
-
         <div className="brand">
-
           <div className="brand-icon">D</div>
 
           <div>
@@ -98,16 +108,15 @@ function App() {
           <button
             className="mobile-close"
             onClick={() => setMobileMenu(false)}
+            aria-label="Close menu"
           >
             <X size={20} />
           </button>
-
         </div>
 
         <div className="nav-label">LEARN</div>
 
         <nav>
-
           {navigation.map((item) => {
             const Icon = item.icon;
 
@@ -117,55 +126,50 @@ function App() {
                 className={`nav-item ${
                   activePage === item.name ? "active" : ""
                 }`}
-                onClick={() => {
-                  setActivePage(item.name);
-                  setMobileMenu(false);
-                  setSearch("");
-                }}
+                onClick={() => handleNavigation(item.name)}
               >
                 <Icon size={19} />
                 <span>{item.name}</span>
               </button>
             );
           })}
-
         </nav>
 
         <div className="sidebar-bottom">
-
           <div className="streak-card">
-
             <span className="streak-emoji">🔥</span>
 
             <div>
               <strong>Start a streak!</strong>
               <p>Learn a little every day.</p>
             </div>
-
           </div>
 
           <button
-            className="nav-item"
-            onClick={() => {
-              setActivePage("Settings");
-              setMobileMenu(false);
-            }}
+            className={`nav-item ${
+              activePage === "Settings" ? "active" : ""
+            }`}
+            onClick={() => handleNavigation("Settings")}
           >
             <Settings size={19} />
             <span>Settings</span>
           </button>
-
         </div>
-
       </aside>
 
+      {mobileMenu && (
+        <div
+          className="sidebar-overlay"
+          onClick={() => setMobileMenu(false)}
+        />
+      )}
+
       <main className="main-content">
-
         <header className="topbar">
-
           <button
             className="menu-button"
             onClick={() => setMobileMenu(true)}
+            aria-label="Open menu"
           >
             <Menu />
           </button>
@@ -175,7 +179,6 @@ function App() {
           </div>
 
           <div className="topbar-right">
-
             <div className="streak">
               <Flame size={18} />
               <span>0 days</span>
@@ -189,22 +192,14 @@ function App() {
             </button>
 
             <div className="profile-avatar">M</div>
-
           </div>
-
         </header>
 
         <div className="page-content">
-
-          {/* DASHBOARD */}
-
           {activePage === "Dashboard" && (
             <>
-
               <section className="welcome-section">
-
                 <div>
-
                   <span className="eyebrow">
                     <Sparkles size={15} /> YOUR GERMAN JOURNEY
                   </span>
@@ -217,19 +212,15 @@ function App() {
                     Every new word brings you closer to speaking German.
                     Let's learn something today!
                   </p>
-
                 </div>
 
                 <div className="welcome-decoration">
                   Guten Tag!
                 </div>
-
               </section>
 
               <section className="hero-card">
-
                 <div className="hero-content">
-
                   <span className="hero-tag">
                     YOUR LEARNING JOURNEY
                   </span>
@@ -243,42 +234,29 @@ function App() {
 
                   <button
                     className="primary-button"
-                    onClick={() => setActivePage("Learning Path")}
+                    onClick={() => handleNavigation("Learning Path")}
                   >
                     Start Learning <ChevronRight size={18} />
                   </button>
-
                 </div>
 
-                <div className="hero-illustration">
-                  🇩🇪
-                </div>
-
-                <div className="hero-decoration">
-                  Hallo!
-                </div>
-
+                <div className="hero-illustration">🇩🇪</div>
+                <div className="hero-decoration">Hallo!</div>
               </section>
 
               <section className="stats-grid">
-
                 <div className="stat-card">
-
                   <div className="stat-icon purple">
                     <BookOpen />
                   </div>
 
                   <div>
                     <span>Lessons completed</span>
-                    <h2>
-                      {totalCompleted}/{totalLessons}
-                    </h2>
+                    <h2>{totalCompleted}/{totalLessons}</h2>
                   </div>
-
                 </div>
 
                 <div className="stat-card">
-
                   <div className="stat-icon pink">
                     <Trophy />
                   </div>
@@ -287,11 +265,9 @@ function App() {
                     <span>Learning points</span>
                     <h2>{totalCompleted * 10} XP</h2>
                   </div>
-
                 </div>
 
                 <div className="stat-card">
-
                   <div className="stat-icon orange">
                     <Flame />
                   </div>
@@ -300,62 +276,46 @@ function App() {
                     <span>Daily streak</span>
                     <h2>0 days</h2>
                   </div>
-
                 </div>
-
               </section>
 
               <section className="progress-card">
-
                 <div className="section-heading">
-
                   <div>
                     <h2>Your progress</h2>
                     <p>Every small step counts!</p>
                   </div>
 
                   <strong>{progress}%</strong>
-
                 </div>
 
                 <div className="progress-track">
-
                   <div
                     className="progress-fill"
                     style={{ width: `${progress}%` }}
                   />
-
                 </div>
 
                 <p className="progress-caption">
-                  {totalCompleted} of {totalLessons} sample lessons completed
+                  {totalCompleted} of {totalLessons} lessons completed
                 </p>
-
               </section>
 
               <section className="section-block">
-
                 <div className="section-heading">
-
                   <div>
                     <h2>Explore learning</h2>
                     <p>Choose what you want to practice.</p>
                   </div>
-
                 </div>
 
                 <div className="category-grid">
-
                   {categories.map((category) => (
                     <button
                       className="category-card"
                       key={category.name}
-                      onClick={() => {
-                        setActivePage(category.name);
-                        setSearch("");
-                      }}
+                      onClick={() => handleNavigation(category.name)}
                     >
-
                       <span className="category-emoji">
                         {category.icon}
                       </span>
@@ -363,131 +323,50 @@ function App() {
                       <strong>{category.name}</strong>
 
                       <span>{category.description}</span>
-
                     </button>
                   ))}
-
                 </div>
-
               </section>
 
-            </>
-          )}
+              <section className="section-block">
+                <div className="section-heading">
+                  <div>
+                    <h2>Continue learning</h2>
+                    <p>Your German A1 lessons.</p>
+                  </div>
 
-          {/* ALPHABET LESSON */}
-
-          {activePage === "Alphabet" && (
-            <AlphabetLesson
-              onComplete={() => setAlphabetCompleted(true)}
-            />
-          )}
-
-          {/* GREETINGS LESSON */}
-
-          {activePage === "Greetings" && (
-            <GreetingsLesson
-              onComplete={() => setGreetingsCompleted(true)}
-            />
-          )}
-
-          {/* SETTINGS */}
-
-          {activePage === "Settings" && (
-
-            <section className="welcome-section">
-
-              <div>
-
-                <span className="eyebrow">
-                  PREFERENCES
-                </span>
-
-                <h1>Settings ⚙️</h1>
-
-                <p>
-                  Account and learning preferences will be available here.
-                </p>
-
-              </div>
-
-            </section>
-
-          )}
-
-          {/* OTHER LEARNING SECTIONS */}
-
-          {activePage !== "Dashboard" &&
-            activePage !== "Settings" &&
-            activePage !== "Alphabet" &&
-            activePage !== "Greetings" && (
-
-              <>
-
-                <section className="page-heading">
-
-                  <span className="eyebrow">
-                    DEUTSCHSTART • A1
-                  </span>
-
-                  <h1>{activePage}</h1>
-
-                  <p>
-                    Learn step by step. Understand, practice and improve.
-                  </p>
-
-                </section>
-
-                <div className="search-box">
-
-                  <Search size={19} />
-
-                  <input
-                    value={search}
-                    onChange={(event) =>
-                      setSearch(event.target.value)
-                    }
-                    placeholder="Search lessons..."
-                  />
-
+                  <button
+                    className="view-all-button"
+                    onClick={() => handleNavigation("Learning Path")}
+                  >
+                    View all <ChevronRight size={15} />
+                  </button>
                 </div>
 
                 <div className="lesson-list">
-
-                  {filteredLessons.map((lesson) => (
-
-                    <article
-                      className="lesson-card"
-                      key={lesson.id}
-                    >
-
+                  {lessons.slice(0, 3).map((lesson) => (
+                    <article className="lesson-card" key={lesson.id}>
                       <div className="lesson-emoji">
                         {lesson.icon}
                       </div>
 
                       <div className="lesson-info">
-
                         <span className="lesson-category">
                           {lesson.category}
                         </span>
 
                         <h3>{lesson.title}</h3>
-
                         <p>{lesson.subtitle}</p>
 
                         <div className="lesson-meta">
-
                           <span>
-                            <Clock size={14} />
-                            {lesson.duration}
+                            <Clock size={14} /> {lesson.duration}
                           </span>
 
                           <span>
-                            <Target size={14} />
-                            {lesson.level}
+                            <Target size={14} /> {lesson.level}
                           </span>
-
                         </div>
-
                       </div>
 
                       <button
@@ -498,59 +377,151 @@ function App() {
                         }
                         onClick={() => toggleComplete(lesson.id)}
                       >
-
                         {completed.includes(lesson.id)
                           ? "Completed ✓"
-                          : "Start lesson"}
+                          : "Mark complete"}
 
                         {!completed.includes(lesson.id) && (
                           <Play size={14} />
                         )}
-
                       </button>
-
                     </article>
-
                   ))}
+                </div>
+              </section>
+            </>
+          )}
 
-                  {filteredLessons.length === 0 && (
+          {activePage === "Alphabet" && (
+            <AlphabetLesson
+              onComplete={() => setAlphabetCompleted(true)}
+            />
+          )}
 
-                    <div className="empty-state">
+          {activePage === "Greetings" && (
+            <GreetingsLesson
+              onComplete={() => setGreetingsCompleted(true)}
+            />
+          )}
 
-                      <Search size={30} />
+          {activePage === "Numbers & Dates" && (
+            <NumbersDatesLesson
+              onComplete={() => setNumbersDatesCompleted(true)}
+            />
+          )}
 
-                      <h3>No lessons found</h3>
+          {activePage === "Settings" && (
+            <section className="welcome-section">
+              <div>
+                <span className="eyebrow">PREFERENCES</span>
 
-                      <p>
-                        Try another search term.
-                      </p>
+                <h1>Settings ⚙️</h1>
 
+                <p>
+                  Account and learning preferences will be available here.
+                </p>
+
+                <p>
+                  Your current learning level is German A1 Beginner.
+                </p>
+
+                <p>
+                  Lessons completed: {totalCompleted} of {totalLessons}.
+                </p>
+              </div>
+            </section>
+          )}
+
+          {![
+            "Dashboard",
+            "Settings",
+            "Alphabet",
+            "Greetings",
+            "Numbers & Dates"
+          ].includes(activePage) && (
+            <>
+              <section className="page-heading">
+                <span className="eyebrow">DEUTSCHSTART • A1</span>
+
+                <h1>{activePage}</h1>
+
+                <p>
+                  Learn step by step. Understand, practice and improve.
+                </p>
+              </section>
+
+              <div className="search-box">
+                <Search size={19} />
+
+                <input
+                  value={search}
+                  onChange={(event) => setSearch(event.target.value)}
+                  placeholder="Search lessons..."
+                />
+              </div>
+
+              <div className="lesson-list">
+                {filteredLessons.map((lesson) => (
+                  <article className="lesson-card" key={lesson.id}>
+                    <div className="lesson-emoji">
+                      {lesson.icon}
                     </div>
 
-                  )}
+                    <div className="lesson-info">
+                      <span className="lesson-category">
+                        {lesson.category}
+                      </span>
 
-                </div>
+                      <h3>{lesson.title}</h3>
+                      <p>{lesson.subtitle}</p>
 
-              </>
+                      <div className="lesson-meta">
+                        <span>
+                          <Clock size={14} /> {lesson.duration}
+                        </span>
 
-            )}
+                        <span>
+                          <Target size={14} /> {lesson.level}
+                        </span>
+                      </div>
+                    </div>
 
-          {/* FOOTER */}
+                    <button
+                      className={
+                        completed.includes(lesson.id)
+                          ? "complete-button completed"
+                          : "complete-button"
+                      }
+                      onClick={() => toggleComplete(lesson.id)}
+                    >
+                      {completed.includes(lesson.id)
+                        ? "Completed ✓"
+                        : "Mark complete"}
+
+                      {!completed.includes(lesson.id) && (
+                        <Play size={14} />
+                      )}
+                    </button>
+                  </article>
+                ))}
+
+                {filteredLessons.length === 0 && (
+                  <div className="empty-state">
+                    <Search size={30} />
+                    <h3>No lessons found</h3>
+                    <p>Try another search term.</p>
+                  </div>
+                )}
+              </div>
+            </>
+          )}
 
           <footer className="footer">
-
             Made with <span>♥</span> for German learners everywhere.
-
-            <p>
-              DeutschStart • Learn a little. Grow a lot.
-            </p>
-
+            <p>DeutschStart • Learn a little. Grow a lot.</p>
           </footer>
-
         </div>
-
       </main>
-
     </div>
   );
 }

@@ -1624,3 +1624,320 @@ button {
     padding: 15px;
   }
 }
+
+.numbers-page {
+  width: 100%;
+  padding: 10px 0 30px;
+}
+
+.numbers-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.lesson-label {
+  color: #8b78c7;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.numbers-heading h1 {
+  margin: 8px 0;
+  font-size: 30px;
+  color: #39334c;
+}
+
+.numbers-heading p {
+  color: #898397;
+}
+
+.numbers-heading-icon {
+  width: 70px;
+  height: 70px;
+  display: grid;
+  place-items: center;
+  border-radius: 22px;
+  background: #eee9ff;
+  color: #8b78c7;
+}
+
+.numbers-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.numbers-tabs button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border: 1px solid #e9e5f0;
+  border-radius: 12px;
+  background: white;
+  color: #777184;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.numbers-tabs button.active {
+  background: #8b78c7;
+  color: white;
+  border-color: #8b78c7;
+}
+
+.numbers-section,
+.numbers-quiz {
+  padding: 24px;
+  background: white;
+  border: 1px solid #eeeaf4;
+  border-radius: 18px;
+}
+
+.numbers-section h2,
+.numbers-quiz h2 {
+  margin: 0 0 8px;
+  color: #39334c;
+}
+
+.numbers-section > p,
+.numbers-quiz > p {
+  color: #898397;
+  margin-bottom: 22px;
+}
+
+.number-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(115px, 1fr));
+  gap: 12px;
+}
+
+.number-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  padding: 17px 10px;
+  border-radius: 15px;
+  background: #f8f6ff;
+  text-align: center;
+}
+
+.number-digit {
+  font-size: 25px;
+  font-weight: 800;
+  color: #8b78c7;
+}
+
+.number-card strong {
+  color: #39334c;
+}
+
+.number-card small,
+.weekday-card small,
+.month-card small {
+  color: #898397;
+}
+
+.number-card button,
+.weekday-card button,
+.month-card button {
+  border: none;
+  background: #eee9ff;
+  color: #806bc0;
+  border-radius: 9px;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.numbers-note {
+  margin-top: 24px;
+  padding: 18px;
+  border-radius: 14px;
+  background: #fff8e9;
+  color: #65563c;
+  line-height: 1.7;
+}
+
+.numbers-note p {
+  margin: 7px 0 0;
+}
+
+.weekday-grid,
+.month-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 12px;
+}
+
+.weekday-card,
+.month-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px;
+  background: #f8f6ff;
+  border-radius: 13px;
+}
+
+.weekday-card > span,
+.month-card > span {
+  display: grid;
+  place-items: center;
+  min-width: 35px;
+  height: 35px;
+  border-radius: 10px;
+  background: #eee9ff;
+  color: #806bc0;
+  font-weight: 800;
+}
+
+.weekday-card div,
+.month-card div {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.weekday-card strong,
+.month-card strong {
+  color: #39334c;
+}
+
+.numbers-quiz {
+  max-width: 750px;
+}
+
+.quiz-progress {
+  display: flex;
+  justify-content: space-between;
+  margin: 22px 0 10px;
+  color: #898397;
+  font-size: 14px;
+}
+
+.quiz-progress-track {
+  height: 8px;
+  overflow: hidden;
+  background: #eeeaf4;
+  border-radius: 20px;
+  margin-bottom: 25px;
+}
+
+.quiz-progress-track div {
+  height: 100%;
+  background: #9b87d3;
+  border-radius: 20px;
+  transition: width 0.3s ease;
+}
+
+.numbers-quiz h3 {
+  color: #39334c;
+  margin-bottom: 18px;
+}
+
+.numbers-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.numbers-options button {
+  padding: 15px;
+  border: 1px solid #e9e5f0;
+  border-radius: 12px;
+  background: #faf9fc;
+  color: #514b60;
+  cursor: pointer;
+  text-align: left;
+  font-weight: 600;
+}
+
+.numbers-options button:disabled {
+  cursor: default;
+  opacity: 1;
+}
+
+.numbers-options button.correct {
+  background: #e8f7ed;
+  border-color: #72bd8c;
+  color: #287b46;
+}
+
+.numbers-options button.incorrect {
+  background: #fff0ef;
+  border-color: #e69b95;
+  color: #b54e48;
+}
+
+.numbers-feedback {
+  margin-top: 20px;
+  padding: 17px;
+  border-radius: 13px;
+  background: #f5f2ff;
+  color: #514b60;
+}
+
+.numbers-feedback p {
+  margin: 8px 0 15px;
+}
+
+.numbers-feedback button,
+.numbers-result button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 18px;
+  border: none;
+  border-radius: 10px;
+  background: #8b78c7;
+  color: white;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.numbers-result {
+  padding: 30px 10px;
+  text-align: center;
+}
+
+.result-icon {
+  color: #8b78c7;
+  margin-bottom: 15px;
+}
+
+.numbers-result p {
+  color: #898397;
+  margin: 10px 0;
+}
+
+.numbers-result button {
+  margin-top: 15px;
+}
+
+@media (max-width: 650px) {
+  .numbers-heading h1 {
+    font-size: 23px;
+  }
+
+  .numbers-section,
+  .numbers-quiz {
+    padding: 16px;
+  }
+
+  .numbers-options {
+    grid-template-columns: 1fr;
+  }
+
+  .numbers-tabs button {
+    flex: 1 1 40%;
+    justify-content: center;
+  }
+}
