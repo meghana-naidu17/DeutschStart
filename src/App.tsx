@@ -1,5 +1,6 @@
 
 import { useMemo, useState } from "react";
+
 import {
   BookOpen,
   GraduationCap,
@@ -19,6 +20,8 @@ import {
   LayoutDashboard,
   Target,
   Award,
+  HelpCircle,
+  Lock,
 } from "lucide-react";
 
 import { lessons, categories } from "./data/course";
@@ -32,6 +35,8 @@ import VerbsLesson from "./components/VerbsLesson";
 import IrregularVerbsLesson from "./components/IrregularVerbsLesson";
 import SentenceStructureLesson from "./components/SentenceStructureLesson";
 import NegationLesson from "./components/NegationLesson";
+import QuestionsLesson from "./components/QuestionsLesson";
+import PossessiveArticlesLesson from "./components/PossessiveArticlesLesson";
 
 type Page =
   | "Dashboard"
@@ -45,6 +50,8 @@ type Page =
   | "Irregular Verbs"
   | "Sentence Structure"
   | "Negation"
+  | "W-Fragen & Ja/Nein-Fragen"
+  | "Possessive Articles"
   | "Grammar"
   | "Vocabulary"
   | "Listening"
@@ -62,6 +69,8 @@ const interactivePages: Page[] = [
   "Irregular Verbs",
   "Sentence Structure",
   "Negation",
+  "W-Fragen & Ja/Nein-Fragen",
+  "Possessive Articles",
 ];
 
 const navigation = [
@@ -84,6 +93,14 @@ const navigation = [
       { name: "Irregular Verbs" as Page, icon: Award },
       { name: "Sentence Structure" as Page, icon: LayoutDashboard },
       { name: "Negation" as Page, icon: BookMarked },
+      {
+        name: "W-Fragen & Ja/Nein-Fragen" as Page,
+        icon: HelpCircle,
+      },
+      {
+        name: "Possessive Articles" as Page,
+        icon: BookMarked,
+      },
     ],
   },
   {
@@ -116,9 +133,25 @@ const lessonDescriptions: Record<string, string> = {
   "Irregular Verbs": "Understand important irregular German verbs.",
   "Sentence Structure": "Learn how to build correct German sentences.",
   Negation: "Learn how to make negative sentences using nicht and kein.",
+  "W-Fragen & Ja/Nein-Fragen":
+    "Learn to ask and answer questions in German.",
+  "Possessive Articles":
+    "Learn mein, dein, sein, ihr, unser and other possessive articles.",
 };
 
-const lessonIcons = ["🔤", "👋", "🔢", "👤", "📚", "✍️", "🔄", "🧩", "🚫"];
+const lessonIcons = [
+  "🔤",
+  "👋",
+  "🔢",
+  "👤",
+  "📚",
+  "✍️",
+  "🔄",
+  "🧩",
+  "🚫",
+  "❓",
+  "👪",
+];
 
 function App() {
   const [activePage, setActivePage] = useState<Page>("Dashboard");
@@ -163,6 +196,69 @@ function App() {
 
   const isCompleted = (lessonName: string) =>
     completedLessons.includes(lessonName);
+
+  const renderComingSoonLevels = () => (
+    <section className="dashboard-section">
+      <div className="section-heading">
+        <div>
+          <h2>Your next learning levels</h2>
+          <p>Complete A1 first. A2 and B1 are coming soon!</p>
+        </div>
+      </div>
+
+      <div className="category-grid">
+        <div className="category-card">
+          <div className="category-icon">🇩🇪</div>
+
+          <span
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "6px",
+              fontSize: "12px",
+              fontWeight: 700,
+              color: "#8872c7",
+              marginBottom: "10px",
+            }}
+          >
+            <Lock size={13} /> COMING SOON
+          </span>
+
+          <h3>A2 – Elementary</h3>
+
+          <p>
+            Improve your German grammar, describe experiences,
+            talk about the past and communicate in everyday situations.
+          </p>
+        </div>
+
+        <div className="category-card">
+          <div className="category-icon">🎓</div>
+
+          <span
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "6px",
+              fontSize: "12px",
+              fontWeight: 700,
+              color: "#8872c7",
+              marginBottom: "10px",
+            }}
+          >
+            <Lock size={13} /> COMING SOON
+          </span>
+
+          <h3>B1 – Intermediate</h3>
+
+          <p>
+            Develop independent communication, express opinions,
+            describe experiences and understand more complex German.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
 
   const renderNavigation = () => (
     <aside className={`sidebar ${sidebarOpen ? "sidebar-open" : ""}`}>
@@ -299,6 +395,7 @@ function App() {
             <Clock size={14} />
             {lesson.duration}
           </span>
+
           <span>{lesson.level}</span>
         </div>
       </div>
@@ -330,7 +427,10 @@ function App() {
         <p>{lessonDescriptions[page]}</p>
 
         <div className="interactive-card-footer">
-          <span>{isCompleted(page) ? "Completed" : "A1 Lesson"}</span>
+          <span>
+            {isCompleted(page) ? "Completed" : "A1 Lesson"}
+          </span>
+
           <ChevronRight size={18} />
         </div>
       </button>
@@ -342,7 +442,9 @@ function App() {
       <section className="welcome-section">
         <div>
           <span className="welcome-label">WILLKOMMEN!</span>
+
           <h1>Start your German learning journey.</h1>
+
           <p>
             Learn German one step at a time. Practise, explore and
             improve your skills every day.
@@ -368,6 +470,7 @@ function App() {
           <div className="stat-icon">
             <BookOpen size={22} />
           </div>
+
           <div>
             <h3>{totalLessons}</h3>
             <p>Total lessons</p>
@@ -378,6 +481,7 @@ function App() {
           <div className="stat-icon">
             <CheckCircle2 size={22} />
           </div>
+
           <div>
             <h3>{completedCount}</h3>
             <p>Completed lessons</p>
@@ -388,6 +492,7 @@ function App() {
           <div className="stat-icon">
             <Target size={22} />
           </div>
+
           <div>
             <h3>{progressPercentage}%</h3>
             <p>Course progress</p>
@@ -446,6 +551,8 @@ function App() {
           {lessons.slice(0, 6).map(renderLessonCard)}
         </div>
       </section>
+
+      {renderComingSoonLevels()}
     </div>
   );
 
@@ -453,7 +560,9 @@ function App() {
     <div className="page-content">
       <div className="page-heading">
         <span className="welcome-label">YOUR COURSE</span>
+
         <h1>A1 Learning Path</h1>
+
         <p>
           Follow the lessons in order and build your German
           foundation step by step.
@@ -466,6 +575,7 @@ function App() {
             <h3>Your learning progress</h3>
             <p>Keep practising to complete your A1 course.</p>
           </div>
+
           <strong>{progressPercentage}%</strong>
         </div>
 
@@ -498,6 +608,7 @@ function App() {
 
             <div className="path-details">
               <h3>{page}</h3>
+
               <p>
                 {isCompleted(page)
                   ? "You have completed this lesson."
@@ -528,6 +639,8 @@ function App() {
           </div>
         ))}
       </div>
+
+      {renderComingSoonLevels()}
     </div>
   );
 
@@ -596,6 +709,24 @@ function App() {
           />
         );
 
+      case "W-Fragen & Ja/Nein-Fragen":
+        return (
+          <QuestionsLesson
+            onComplete={() =>
+              markLessonComplete("W-Fragen & Ja/Nein-Fragen")
+            }
+          />
+        );
+
+      case "Possessive Articles":
+        return (
+          <PossessiveArticlesLesson
+            onComplete={() =>
+              markLessonComplete("Possessive Articles")
+            }
+          />
+        );
+
       default:
         return null;
     }
@@ -629,6 +760,8 @@ function App() {
               "Irregular Verbs",
               "Sentence Structure",
               "Negation",
+              "W-Fragen & Ja/Nein-Fragen",
+              "Possessive Articles",
             ].map((page) => renderInteractiveCard(page as Page))}
           </div>
         )}
@@ -637,7 +770,7 @@ function App() {
           <div className="lesson-list">
             {matchingLessons.map(renderLessonCard)}
           </div>
-        ) : (
+        ) : activePage !== "Grammar" ? (
           <div className="empty-state">
             <BookOpen size={35} />
             <h3>No lessons found yet</h3>
@@ -646,7 +779,7 @@ function App() {
               as we build your German course.
             </p>
           </div>
-        )}
+        ) : null}
       </div>
     );
   };
@@ -664,10 +797,12 @@ function App() {
           <div className="settings-icon">
             <GraduationCap size={22} />
           </div>
+
           <div>
             <h3>Learning level</h3>
             <p>Your current learning level is A1.</p>
           </div>
+
           <span className="settings-value">A1</span>
         </div>
 
@@ -675,10 +810,12 @@ function App() {
           <div className="settings-icon">
             <Languages size={22} />
           </div>
+
           <div>
             <h3>Learning language</h3>
             <p>You are learning German.</p>
           </div>
+
           <span className="settings-value">German</span>
         </div>
 
@@ -686,12 +823,14 @@ function App() {
           <div className="settings-icon">
             <Target size={22} />
           </div>
+
           <div>
             <h3>Course progress</h3>
             <p>
               {completedCount} of {totalLessons} lessons completed.
             </p>
           </div>
+
           <span className="settings-value">
             {progressPercentage}%
           </span>
