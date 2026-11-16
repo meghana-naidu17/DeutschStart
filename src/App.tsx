@@ -21,6 +21,7 @@ import {
   Award,
   HelpCircle,
   Lock,
+  Zap,
 } from "lucide-react";
 
 import { lessons, categories } from "./data/course";
@@ -37,6 +38,7 @@ import NegationLesson from "./components/NegationLesson";
 import QuestionsLesson from "./components/QuestionsLesson";
 import PossessiveArticlesLesson from "./components/PossessiveArticlesLesson";
 import PluralNounsLesson from "./components/PluralNounsLesson";
+import ModalVerbsLesson from "./components/ModalVerbsLesson";
 
 type Page =
   | "Dashboard"
@@ -53,6 +55,7 @@ type Page =
   | "W-Fragen & Ja/Nein-Fragen"
   | "Possessive Articles"
   | "Plural Nouns"
+  | "Modal Verbs"
   | "Grammar"
   | "Vocabulary"
   | "Listening"
@@ -73,6 +76,7 @@ const interactivePages: Page[] = [
   "W-Fragen & Ja/Nein-Fragen",
   "Possessive Articles",
   "Plural Nouns",
+  "Modal Verbs",
 ];
 
 const navigation = [
@@ -98,6 +102,7 @@ const navigation = [
       { name: "W-Fragen & Ja/Nein-Fragen" as Page, icon: HelpCircle },
       { name: "Possessive Articles" as Page, icon: BookMarked },
       { name: "Plural Nouns" as Page, icon: BookOpen },
+      { name: "Modal Verbs" as Page, icon: Zap },
     ],
   },
   {
@@ -133,6 +138,7 @@ const lessonDescriptions: Record<string, string> = {
   "W-Fragen & Ja/Nein-Fragen": "Learn how to ask questions in German.",
   "Possessive Articles": "Learn mein, dein, sein, ihr and other possessive articles.",
   "Plural Nouns": "Learn how to form and use German plural nouns.",
+  "Modal Verbs": "Learn können, müssen, wollen, dürfen, sollen and mögen.",
 };
 
 const lessonIcons = [
@@ -148,6 +154,7 @@ const lessonIcons = [
   "❓",
   "👪",
   "📖",
+  "⚡",
 ];
 
 function App() {
@@ -692,6 +699,13 @@ function App() {
           />
         );
 
+      case "Modal Verbs":
+        return (
+          <ModalVerbsLesson
+            onComplete={() => markLessonComplete("Modal Verbs")}
+          />
+        );
+
       default:
         return null;
     }
@@ -728,6 +742,7 @@ function App() {
               "W-Fragen & Ja/Nein-Fragen",
               "Possessive Articles",
               "Plural Nouns",
+              "Modal Verbs",
             ].map((page) => renderInteractiveCard(page as Page))}
           </div>
         )}
