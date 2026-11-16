@@ -12,7 +12,6 @@ import {
   Headphones,
   Mic,
   BookMarked,
-  Lock,
   CheckCircle2,
   Clock,
   Play,
@@ -32,6 +31,7 @@ import ArticlesLesson from "./components/ArticlesLesson";
 import VerbsLesson from "./components/VerbsLesson";
 import IrregularVerbsLesson from "./components/IrregularVerbsLesson";
 import SentenceStructureLesson from "./components/SentenceStructureLesson";
+import NegationLesson from "./components/NegationLesson";
 
 type Page =
   | "Dashboard"
@@ -44,6 +44,7 @@ type Page =
   | "Verbs"
   | "Irregular Verbs"
   | "Sentence Structure"
+  | "Negation"
   | "Grammar"
   | "Vocabulary"
   | "Listening"
@@ -60,6 +61,7 @@ const interactivePages: Page[] = [
   "Verbs",
   "Irregular Verbs",
   "Sentence Structure",
+  "Negation",
 ];
 
 const navigation = [
@@ -81,6 +83,7 @@ const navigation = [
       { name: "Verbs" as Page, icon: Play },
       { name: "Irregular Verbs" as Page, icon: Award },
       { name: "Sentence Structure" as Page, icon: LayoutDashboard },
+      { name: "Negation" as Page, icon: BookMarked },
     ],
   },
   {
@@ -103,6 +106,20 @@ const pageDescriptions: Record<string, string> = {
   Reading: "Improve your German reading and comprehension.",
 };
 
+const lessonDescriptions: Record<string, string> = {
+  Alphabet: "Learn German letters and their pronunciation.",
+  Greetings: "Learn how to greet and introduce yourself.",
+  "Numbers & Dates": "Learn numbers, weekdays, months and dates.",
+  "Personal Pronouns": "Understand German personal pronouns.",
+  Articles: "Learn der, die, das, ein, eine and kein.",
+  Verbs: "Learn regular German verbs and their conjugations.",
+  "Irregular Verbs": "Understand important irregular German verbs.",
+  "Sentence Structure": "Learn how to build correct German sentences.",
+  Negation: "Learn how to make negative sentences using nicht and kein.",
+};
+
+const lessonIcons = ["🔤", "👋", "🔢", "👤", "📚", "✍️", "🔄", "🧩", "🚫"];
+
 function App() {
   const [activePage, setActivePage] = useState<Page>("Dashboard");
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -110,7 +127,6 @@ function App() {
   const [completedLessons, setCompletedLessons] = useState<string[]>([]);
 
   const totalLessons = lessons.length + interactivePages.length;
-
   const completedCount = completedLessons.length;
 
   const progressPercentage =
@@ -154,10 +170,12 @@ function App() {
         <div className="brand-icon">
           <Languages size={25} />
         </div>
+
         <div>
           <h2>DeutschStart</h2>
           <span>Learn German with confidence</span>
         </div>
+
         <button
           className="mobile-close"
           onClick={() => setSidebarOpen(false)}
@@ -255,11 +273,6 @@ function App() {
           placeholder="Search lessons..."
           value={searchQuery}
           onChange={(event) => setSearchQuery(event.target.value)}
-          onKeyDown={(event) => {
-            if (event.key === "Enter" && searchQuery.trim()) {
-              navigateTo("Grammar");
-            }
-          }}
         />
       </div>
     </header>
@@ -292,19 +305,8 @@ function App() {
     </div>
   );
 
-  const renderInteractiveCard = (page: Page, index: number) => {
-    const icons = ["🔤", "👋", "🔢", "👤", "📚", "✍️", "🔄", "🧩"];
-
-    const descriptions: Record<string, string> = {
-      Alphabet: "Learn German letters and their pronunciation.",
-      Greetings: "Learn how to greet and introduce yourself.",
-      "Numbers & Dates": "Learn numbers, weekdays, months and dates.",
-      "Personal Pronouns": "Understand German personal pronouns.",
-      Articles: "Learn der, die, das, ein, eine and kein.",
-      Verbs: "Learn regular German verbs and their conjugations.",
-      "Irregular Verbs": "Understand important irregular German verbs.",
-      "Sentence Structure": "Learn how to build correct German sentences.",
-    };
+  const renderInteractiveCard = (page: Page) => {
+    const index = interactivePages.indexOf(page);
 
     return (
       <button
@@ -313,7 +315,9 @@ function App() {
         onClick={() => navigateTo(page)}
       >
         <div className="interactive-card-top">
-          <span className="interactive-card-icon">{icons[index]}</span>
+          <span className="interactive-card-icon">
+            {lessonIcons[index]}
+          </span>
 
           {isCompleted(page) ? (
             <CheckCircle2 size={19} className="completed-icon" />
@@ -323,7 +327,7 @@ function App() {
         </div>
 
         <h3>{page}</h3>
-        <p>{descriptions[page]}</p>
+        <p>{lessonDescriptions[page]}</p>
 
         <div className="interactive-card-footer">
           <span>{isCompleted(page) ? "Completed" : "A1 Lesson"}</span>
@@ -407,9 +411,7 @@ function App() {
         </div>
 
         <div className="interactive-lesson-grid">
-          {interactivePages.map((page, index) =>
-            renderInteractiveCard(page, index)
-          )}
+          {interactivePages.map(renderInteractiveCard)}
         </div>
       </section>
 
@@ -587,6 +589,13 @@ function App() {
           />
         );
 
+      case "Negation":
+        return (
+          <NegationLesson
+            onComplete={() => markLessonComplete("Negation")}
+          />
+        );
+
       default:
         return null;
     }
@@ -619,12 +628,8 @@ function App() {
               "Verbs",
               "Irregular Verbs",
               "Sentence Structure",
-            ].map((page, index) =>
-              renderInteractiveCard(
-                page as Page,
-                interactivePages.indexOf(page as Page)
-              )
-            )}
+              "Negation",
+            ].map((page) => renderInteractiveCard(page as Page))}
           </div>
         )}
 

@@ -3982,3 +3982,332 @@ button {
     padding: 15px;
   }
 }
+
+.negation-lesson {
+  width: 100%;
+  max-width: 1050px;
+  margin: 0 auto;
+  padding: 28px;
+  color: #302b39;
+}
+
+.negation-header {
+  margin-bottom: 28px;
+}
+
+.negation-label,
+.welcome-label {
+  color: #8d6bb0;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.negation-header h1 {
+  font-size: 32px;
+  margin: 12px 0;
+}
+
+.negation-header p,
+.negation-content > p {
+  color: #777181;
+  line-height: 1.7;
+}
+
+.negation-tabs {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #e8e1ed;
+  padding-bottom: 15px;
+  margin-bottom: 25px;
+}
+
+.negation-tabs button {
+  border: 1px solid #e5dceb;
+  background: #fff;
+  color: #62566f;
+  border-radius: 10px;
+  padding: 11px 18px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.negation-tabs button.active {
+  background: #8061a5;
+  color: white;
+  border-color: #8061a5;
+}
+
+.negation-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.negation-intro,
+.negation-tip {
+  background: #f5f0fa;
+  padding: 22px;
+  border-radius: 15px;
+}
+
+.negation-intro h2,
+.negation-content h2 {
+  margin: 0 0 10px;
+}
+
+.negation-intro p,
+.negation-tip p {
+  color: #6f667b;
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+
+.negation-comparison {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.negation-word-card {
+  background: white;
+  border: 1px solid #e9e1ef;
+  border-radius: 16px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.negation-big-word {
+  font-size: 30px;
+  font-weight: 900;
+  color: #8061a5;
+}
+
+.negation-word-card h3 {
+  margin: 0;
+}
+
+.negation-word-card p,
+.negation-word-card small {
+  color: #777181;
+  line-height: 1.6;
+}
+
+.negation-word-card button,
+.negation-example button,
+.negation-transformation button {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  border: 0;
+  background: #f0eaf6;
+  color: #70518f;
+  padding: 9px 13px;
+  border-radius: 9px;
+  cursor: pointer;
+}
+
+.negation-example-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.negation-example {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  background: white;
+  border: 1px solid #ece5f0;
+  padding: 17px;
+  border-radius: 12px;
+}
+
+.negation-example strong {
+  font-size: 16px;
+}
+
+.negation-example p {
+  color: #777181;
+  margin: 7px 0 0;
+}
+
+.negation-example button {
+  flex-shrink: 0;
+}
+
+.negation-table-wrapper {
+  overflow-x: auto;
+}
+
+.negation-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.negation-table th,
+.negation-table td {
+  padding: 15px;
+  border: 1px solid #eee7f1;
+  text-align: center;
+}
+
+.negation-table th {
+  background: #f2edf7;
+  color: #654a82;
+}
+
+.negation-transformation {
+  background: white;
+  border: 1px solid #ece5f0;
+  padding: 20px;
+  border-radius: 13px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.negation-transformation span {
+  color: #8c70a8;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.negation-transformation p {
+  font-weight: 700;
+  margin: 7px 0;
+}
+
+.negation-transformation small {
+  color: #777181;
+}
+
+.negation-arrow {
+  color: #9272ad;
+  font-size: 20px;
+}
+
+.negation-quiz-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.negation-quiz-heading span {
+  color: #8061a5;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.negation-question {
+  background: white;
+  border: 1px solid #ece5f0;
+  border-radius: 13px;
+  padding: 20px;
+}
+
+.negation-question h3 {
+  font-size: 16px;
+  margin: 0 0 15px;
+}
+
+.negation-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.negation-options button {
+  background: #f7f3fa;
+  border: 1px solid #e7dced;
+  border-radius: 9px;
+  padding: 10px 20px;
+  cursor: pointer;
+  color: #594b68;
+}
+
+.negation-options button.selected {
+  background: #8061a5;
+  border-color: #8061a5;
+  color: white;
+}
+
+.negation-options button.correct {
+  background: #e5f5e9;
+  border-color: #73b887;
+  color: #26743e;
+}
+
+.negation-options button.incorrect {
+  background: #fff0f0;
+  border-color: #e69a9a;
+  color: #b13e3e;
+}
+
+.negation-explanation {
+  color: #6f667b;
+  background: #f7f3fa;
+  padding: 11px;
+  border-radius: 8px;
+  line-height: 1.5;
+}
+
+.negation-submit {
+  border: 0;
+  background: #8061a5;
+  color: white;
+  padding: 13px 22px;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  align-self: flex-start;
+}
+
+.negation-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.negation-result {
+  background: #f5f0fa;
+  border-radius: 15px;
+  padding: 25px;
+  text-align: center;
+}
+
+.negation-result-icon {
+  color: #8061a5;
+}
+
+.negation-result .negation-submit {
+  margin: 10px auto 0;
+}
+
+@media (max-width: 650px) {
+  .negation-lesson {
+    padding: 16px;
+  }
+
+  .negation-header h1 {
+    font-size: 25px;
+  }
+
+  .negation-comparison {
+    grid-template-columns: 1fr;
+  }
+
+  .negation-quiz-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
