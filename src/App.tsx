@@ -77,6 +77,7 @@ import PluralNounsLesson from "./components/PluralNounsLesson";
 import ModalVerbsLesson from "./components/ModalVerbsLesson";
 
 import SeparableVerbsLesson from "./components/SeparableVerbsLesson";
+import TimeDailyRoutineLesson from "./components/TimeDailyRoutineLesson";
 
 type Page =
 
@@ -111,6 +112,7 @@ type Page =
   | "Modal Verbs"
 
   | "Separable Verbs"
+  | "Time & Daily Routine"
 
   | "Grammar"
 
@@ -153,6 +155,8 @@ const interactivePages: Page[] = [
   "Modal Verbs",
 
   "Separable Verbs",
+
+  "Time & Daily Routine",
 
 ];
 
@@ -205,6 +209,7 @@ const navigation = [
       { name: "Modal Verbs" as Page, icon: Zap },
 
       { name: "Separable Verbs" as Page, icon: Repeat },
+      { name: "Time & Daily Routine" as Page, icon: Clock },
 
     ],
 
@@ -275,6 +280,7 @@ const lessonDescriptions: Record<string, string> = {
   "Modal Verbs": "Learn können, müssen, wollen, dürfen, sollen and mögen.",
 
   "Separable Verbs": "Learn how German separable verbs work in sentences.",
+  "Time & Daily Routine": "Learn to tell the time and describe your everyday routine.",
 
 };
 
@@ -307,6 +313,8 @@ const lessonIcons = [
   "⚡",
 
   "🔀",
+
+  "🕒",
 
 ];
 
@@ -1270,6 +1278,18 @@ function App() {
 
         );
 
+      case "Time & Daily Routine":
+
+        return (
+
+          <TimeDailyRoutineLesson
+
+            onComplete={() => markLessonComplete("Time & Daily Routine")}
+
+          />
+
+        );
+
       default:
 
         return null;
@@ -1337,6 +1357,8 @@ function App() {
               "Modal Verbs",
 
               "Separable Verbs",
+
+              "Time & Daily Routine",
 
             ].map((page) => renderInteractiveCard(page as Page))}
 
