@@ -2741,3 +2741,841 @@ button {
     align-items: flex-start;
   }
 }
+
+.verbs-lesson {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  color: #263247;
+}
+
+.verbs-hero {
+  padding: 30px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #e9eaff, #fce9f1);
+  margin-bottom: 22px;
+}
+
+.verbs-label {
+  color: #6655a8;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.verbs-hero h1 {
+  font-size: 32px;
+  margin: 12px 0;
+}
+
+.verbs-hero p {
+  color: #626b7d;
+}
+
+.verbs-hero button,
+.verbs-card button,
+.verbs-example-row button {
+  border: 0;
+  background: #eeeaff;
+  color: #5542a2;
+  padding: 9px 13px;
+  border-radius: 9px;
+  cursor: pointer;
+}
+
+.verbs-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-bottom: 22px;
+}
+
+.verbs-tabs button {
+  padding: 11px 17px;
+  border: 1px solid #e0e2ec;
+  border-radius: 10px;
+  background: white;
+  color: #555d70;
+  cursor: pointer;
+}
+
+.verbs-tabs button.active {
+  background: #6655a8;
+  color: white;
+  border-color: #6655a8;
+}
+
+.verbs-content {
+  background: white;
+  border: 1px solid #e8e9f0;
+  border-radius: 18px;
+  padding: 26px;
+}
+
+.verbs-content h2 {
+  margin: 22px 0 12px;
+  font-size: 22px;
+}
+
+.verbs-content h2:first-child {
+  margin-top: 0;
+}
+
+.verbs-content h3 {
+  margin: 25px 0 12px;
+}
+
+.verbs-content p {
+  line-height: 1.7;
+  color: #626b7d;
+}
+
+.verbs-example-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.verbs-example-grid div {
+  padding: 18px;
+  border-radius: 12px;
+  background: #f4f2ff;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.verbs-example-grid strong {
+  color: #5542a2;
+  font-size: 18px;
+}
+
+.verbs-example-grid span {
+  color: #747b8d;
+  font-size: 13px;
+}
+
+.verbs-highlight,
+.verbs-tip {
+  background: #f5f4ff;
+  border-left: 4px solid #7663bd;
+  padding: 18px;
+  border-radius: 10px;
+  margin: 18px 0;
+}
+
+.verbs-highlight strong,
+.verbs-tip strong {
+  color: #5542a2;
+}
+
+.verbs-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  margin: 18px 0;
+}
+
+.verbs-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 420px;
+  text-align: left;
+}
+
+.verbs-table th,
+.verbs-table td {
+  padding: 13px;
+  border: 1px solid #e5e6ee;
+}
+
+.verbs-table thead th {
+  background: #efedff;
+  color: #5542a2;
+}
+
+.verbs-table tbody tr:nth-child(even) {
+  background: #fafaff;
+}
+
+.verbs-table td strong {
+  color: #5542a2;
+}
+
+.verbs-card {
+  border: 1px solid #e5e6ee;
+  border-radius: 13px;
+  padding: 18px;
+  margin: 16px 0;
+}
+
+.verbs-card-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.verbs-card-heading h3 {
+  margin: 0 0 4px;
+  color: #5542a2;
+}
+
+.verbs-card-heading span {
+  color: #777f90;
+  font-size: 14px;
+}
+
+.verbs-example-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid #eeeef3;
+}
+
+.verbs-example-row:last-child {
+  border-bottom: 0;
+}
+
+.verbs-primary,
+.verbs-secondary {
+  padding: 13px 20px;
+  border-radius: 10px;
+  border: 0;
+  margin-top: 18px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.verbs-primary {
+  background: #6655a8;
+  color: white;
+}
+
+.verbs-primary:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.verbs-secondary {
+  background: #efedff;
+  color: #5542a2;
+  margin-left: 10px;
+}
+
+.verbs-progress {
+  padding: 12px;
+  background: #f4f2ff;
+  border-radius: 10px;
+  margin: 15px 0;
+  color: #5542a2;
+  font-weight: 700;
+}
+
+.verbs-question {
+  padding: 18px 0;
+  border-bottom: 1px solid #ececf2;
+}
+
+.verbs-question h3 {
+  margin: 0 0 13px;
+  font-size: 16px;
+}
+
+.verbs-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.verbs-options button {
+  border: 1px solid #dddfea;
+  padding: 11px 17px;
+  background: white;
+  border-radius: 9px;
+  cursor: pointer;
+}
+
+.verbs-options button.selected {
+  background: #efedff;
+  border-color: #6655a8;
+  color: #5542a2;
+  font-weight: 700;
+}
+
+.verbs-options button:disabled {
+  cursor: default;
+}
+
+.verbs-correct,
+.verbs-wrong {
+  padding: 13px;
+  margin-top: 12px;
+  border-radius: 9px;
+}
+
+.verbs-correct {
+  background: #eaf8ef;
+  color: #237343;
+}
+
+.verbs-wrong {
+  background: #fff0ef;
+  color: #a33d37;
+}
+
+.verbs-correct p,
+.verbs-wrong p {
+  margin-bottom: 0;
+}
+
+.verbs-result {
+  padding: 20px;
+  background: #f5f4ff;
+  border-radius: 12px;
+  margin-top: 20px;
+}
+
+@media (max-width: 650px) {
+  .verbs-hero {
+    padding: 22px;
+  }
+
+  .verbs-hero h1 {
+    font-size: 25px;
+  }
+
+  .verbs-content {
+    padding: 17px;
+  }
+
+  .verbs-example-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .verbs-tabs {
+    gap: 6px;
+  }
+
+  .verbs-tabs button {
+    padding: 9px 11px;
+    font-size: 13px;
+  }
+}
+
+.irregular-lesson {
+  width: 100%;
+  color: var(--text-primary, #263047);
+}
+
+.irregular-hero {
+  padding: 32px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, #e8e8ff, #fce8f3, #e2f5f1);
+  margin-bottom: 24px;
+}
+
+.irregular-eyebrow {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: #6655a8;
+}
+
+.irregular-hero h1 {
+  font-size: clamp(28px, 4vw, 40px);
+  margin: 12px 0 4px;
+}
+
+.irregular-hero > p {
+  margin: 7px 0;
+  color: #55536c;
+}
+
+.irregular-hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 20px;
+}
+
+.irregular-hero-tags span {
+  background: rgba(255, 255, 255, 0.75);
+  color: #554b7b;
+  border-radius: 30px;
+  padding: 8px 13px;
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.irregular-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  border-bottom: 1px solid #e7e7ee;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+}
+
+.irregular-tabs button,
+.irregular-group-buttons button {
+  border: 1px solid #e3e1ee;
+  background: #fff;
+  border-radius: 10px;
+  padding: 11px 16px;
+  cursor: pointer;
+  font-weight: 650;
+  color: #55536c;
+}
+
+.irregular-tabs button.active,
+.irregular-group-buttons button.selected {
+  background: #6d5bd0;
+  color: white;
+  border-color: #6d5bd0;
+}
+
+.irregular-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.irregular-section h2 {
+  font-size: 23px;
+  margin: 0;
+}
+
+.irregular-section h3 {
+  margin: 0;
+}
+
+.irregular-intro-card,
+.irregular-verb-detail,
+.irregular-table-card,
+.irregular-other-card,
+.irregular-example-group,
+.irregular-question,
+.irregular-result {
+  background: var(--card-bg, #fff);
+  border: 1px solid var(--border-color, #e9e8f0);
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.irregular-intro-card > p,
+.irregular-group-description p,
+.irregular-muted {
+  color: var(--text-secondary, #73758a);
+  line-height: 1.7;
+}
+
+.irregular-comparison {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.irregular-comparison > div {
+  background: #f5f3ff;
+  padding: 17px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.irregular-comparison span {
+  color: #716b91;
+  font-size: 12px;
+}
+
+.irregular-comparison strong {
+  color: #5846b1;
+  font-size: 22px;
+}
+
+.irregular-comparison p {
+  margin: 0;
+}
+
+.irregular-group-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.irregular-group-description {
+  padding: 17px;
+  background: #f5f3ff;
+  border-radius: 12px;
+}
+
+.irregular-group-description h3 {
+  color: #5846b1;
+}
+
+.irregular-group-description p {
+  margin-bottom: 0;
+}
+
+.irregular-verb-layout {
+  display: grid;
+  grid-template-columns: minmax(150px, 0.75fr) minmax(0, 2fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.irregular-verb-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.irregular-verb-list button {
+  border: 1px solid #e7e5ef;
+  background: #fff;
+  padding: 13px;
+  border-radius: 11px;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.irregular-verb-list button.selected {
+  border-color: #7564d6;
+  background: #f4f1ff;
+}
+
+.irregular-verb-list button strong {
+  color: #5745b0;
+  font-size: 16px;
+}
+
+.irregular-verb-list button span {
+  font-size: 12px;
+  color: #77758a;
+}
+
+.irregular-verb-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.irregular-verb-heading h2 {
+  color: #5b4aba;
+  font-size: 28px;
+}
+
+.irregular-verb-heading p {
+  color: #77758a;
+  margin: 5px 0;
+}
+
+.irregular-speak,
+.irregular-example button {
+  border: 0;
+  border-radius: 10px;
+  padding: 9px 12px;
+  background: #f0edff;
+  color: #5b4aba;
+  cursor: pointer;
+  font-weight: 650;
+}
+
+.irregular-change {
+  background: #f4f1ff;
+  color: #5846b1;
+  border-radius: 9px;
+  padding: 11px;
+  margin: 17px 0;
+}
+
+.irregular-conjugation-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 9px;
+  margin-bottom: 24px;
+}
+
+.irregular-conjugation-grid > div {
+  background: #f7f6fb;
+  border-radius: 10px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.irregular-conjugation-grid span,
+.irregular-other-form span {
+  color: #77758a;
+  font-size: 12px;
+}
+
+.irregular-conjugation-grid strong {
+  color: #5142a5;
+  font-size: 17px;
+}
+
+.irregular-conjugation-grid button {
+  border: 0;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.irregular-verb-detail h3 {
+  margin: 20px 0 12px;
+}
+
+.irregular-example {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid #eeedf3;
+}
+
+.irregular-example:last-child {
+  border-bottom: 0;
+}
+
+.irregular-example > div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.irregular-example strong {
+  font-size: 14px;
+}
+
+.irregular-example span {
+  font-size: 13px;
+  color: #77758a;
+}
+
+.irregular-other-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.irregular-other-form {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #efedf4;
+}
+
+.irregular-other-form strong {
+  color: #5846b1;
+}
+
+.irregular-table-card {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.irregular-table-card > h3 {
+  color: #5846b1;
+}
+
+.irregular-table-wrap {
+  overflow-x: auto;
+  border: 1px solid #eeedf3;
+  border-radius: 10px;
+  padding: 12px;
+}
+
+.irregular-table-wrap h4 {
+  margin: 0 0 10px;
+}
+
+.irregular-table-wrap table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 240px;
+  text-align: left;
+}
+
+.irregular-table-wrap th,
+.irregular-table-wrap td {
+  padding: 10px;
+  border-bottom: 1px solid #eeedf3;
+}
+
+.irregular-table-wrap th {
+  background: #f5f3ff;
+  color: #5846b1;
+}
+
+.irregular-table-wrap td strong {
+  color: #5846b1;
+}
+
+.irregular-example-group h3 {
+  color: #5846b1;
+  margin-bottom: 8px;
+}
+
+.irregular-example-group h3 span {
+  color: #77758a;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.irregular-quiz-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.irregular-quiz-heading p {
+  color: #77758a;
+  margin: 6px 0 0;
+}
+
+.irregular-quiz-heading > span {
+  background: #f0edff;
+  color: #5846b1;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.irregular-question h3 {
+  font-size: 16px;
+  margin-bottom: 14px;
+}
+
+.irregular-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.irregular-options button {
+  background: #fff;
+  border: 1px solid #e3e1ee;
+  padding: 10px 16px;
+  border-radius: 9px;
+  cursor: pointer;
+}
+
+.irregular-options button.chosen {
+  background: #f0edff;
+  border-color: #7564d6;
+  color: #5846b1;
+}
+
+.irregular-options button.correct {
+  background: #e5f7eb;
+  border-color: #42a66b;
+  color: #247344;
+}
+
+.irregular-options button.incorrect {
+  background: #ffeded;
+  border-color: #dc7777;
+  color: #a83232;
+}
+
+.irregular-options button:disabled {
+  cursor: default;
+}
+
+.irregular-explanation {
+  color: #5c5a72;
+  background: #f5f3ff;
+  padding: 10px;
+  border-radius: 9px;
+  font-size: 13px;
+}
+
+.irregular-primary-button,
+.irregular-retry-button {
+  border: 0;
+  border-radius: 10px;
+  padding: 13px 20px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.irregular-primary-button {
+  background: #6d5bd0;
+  color: #fff;
+}
+
+.irregular-primary-button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.irregular-retry-button {
+  background: #f0edff;
+  color: #5846b1;
+  margin-left: 8px;
+}
+
+.irregular-result h2 {
+  color: #5846b1;
+}
+
+.irregular-result p {
+  line-height: 1.6;
+  color: #77758a;
+}
+
+@media (max-width: 700px) {
+  .irregular-hero {
+    padding: 22px;
+  }
+
+  .irregular-verb-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .irregular-verb-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .irregular-other-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .irregular-conjugation-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .irregular-comparison {
+    grid-template-columns: 1fr;
+  }
+
+  .irregular-tabs {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+  }
+
+  .irregular-tabs button {
+    white-space: nowrap;
+  }
+
+  .irregular-quiz-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
