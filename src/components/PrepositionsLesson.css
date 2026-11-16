@@ -1,0 +1,472 @@
+.prepositions-lesson {
+  color: #263247;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  width: 100%;
+}
+
+.prepositions-hero {
+  align-items: center;
+  background: linear-gradient(120deg, #eef2ff, #fdf2f8);
+  border: 1px solid #e5e7f5;
+  border-radius: 22px;
+  display: flex;
+  gap: 20px;
+  padding: 26px;
+}
+
+.prepositions-hero-icon {
+  align-items: center;
+  background: white;
+  border-radius: 18px;
+  display: flex;
+  flex: 0 0 72px;
+  font-size: 34px;
+  height: 72px;
+  justify-content: center;
+}
+
+.prepositions-eyebrow {
+  color: #7772b8;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+  margin: 0 0 5px;
+}
+
+.prepositions-hero h1 {
+  color: #252b45;
+  font-size: clamp(25px, 4vw, 34px);
+  margin: 0 0 7px;
+}
+
+.prepositions-hero p:last-child {
+  color: #626b7e;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.prepositions-tabs {
+  border-bottom: 1px solid #e6e8ef;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.prepositions-tabs button,
+.prepositions-selector button {
+  background: transparent;
+  border: 0;
+  border-radius: 10px;
+  color: #697386;
+  cursor: pointer;
+  font: inherit;
+  padding: 11px 15px;
+}
+
+.prepositions-tabs button.active {
+  background: #edeaff;
+  color: #5546a5;
+  font-weight: 700;
+}
+
+.prepositions-panel {
+  background: #fff;
+  border: 1px solid #e8eaf1;
+  border-radius: 18px;
+  padding: 25px;
+}
+
+.prepositions-panel h2 {
+  color: #28324a;
+  font-size: 23px;
+  margin: 0 0 12px;
+}
+
+.prepositions-panel h3 {
+  color: #303a53;
+  font-size: 17px;
+  margin: 24px 0 12px;
+}
+
+.prepositions-panel p {
+  line-height: 1.7;
+}
+
+.prepositions-callout {
+  background: #f4f2ff;
+  border-left: 4px solid #8b7bd8;
+  border-radius: 10px;
+  margin: 20px 0;
+  padding: 14px 17px;
+}
+
+.prepositions-callout p {
+  margin: 5px 0 0;
+}
+
+.prepositions-card-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+}
+
+.prepositions-word-card {
+  align-items: flex-start;
+  background: #fbfaff;
+  border: 1px solid #e7e3fb;
+  border-radius: 13px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 15px;
+  text-align: left;
+}
+
+.prepositions-word-card strong {
+  color: #594ba6;
+  font-size: 24px;
+}
+
+.prepositions-word-card span {
+  color: #414b61;
+}
+
+.prepositions-word-card small {
+  color: #8278b7;
+  margin-top: 5px;
+}
+
+.prepositions-two-columns {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+}
+
+.prepositions-two-columns article {
+  background: #f8f9fc;
+  border: 1px solid #e8ebf2;
+  border-radius: 13px;
+  padding: 17px;
+}
+
+.prepositions-two-columns h4 {
+  margin: 0 0 8px;
+}
+
+.prepositions-big-words {
+  color: #594ba6;
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: .3px;
+  margin: 8px 0;
+}
+
+.prepositions-note {
+  color: #727b8d;
+  font-size: 13px;
+}
+
+.prepositions-guide-layout {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: minmax(150px, 220px) minmax(0, 1fr);
+}
+
+.prepositions-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.prepositions-selector button {
+  align-items: center;
+  background: #f8f9fc;
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
+}
+
+.prepositions-selector button.selected {
+  background: #eeeaff;
+  color: #5546a5;
+}
+
+.prepositions-selector button strong {
+  font-size: 19px;
+}
+
+.prepositions-selector button span {
+  font-size: 12px;
+}
+
+.prepositions-detail {
+  background: #fcfcff;
+  border: 1px solid #e8e8f2;
+  border-radius: 15px;
+  padding: 20px;
+}
+
+.prepositions-detail-heading {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.prepositions-detail-heading span {
+  color: #8981b9;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.prepositions-detail-heading h3 {
+  color: #594ba6;
+  font-size: 35px;
+  margin: 0;
+}
+
+.prepositions-detail-heading button,
+.prepositions-example button,
+.prepositions-compare button {
+  background: #eeeaff;
+  border: 0;
+  border-radius: 9px;
+  color: #5546a5;
+  cursor: pointer;
+  padding: 9px 12px;
+}
+
+.prepositions-meaning {
+  color: #594ba6;
+  font-size: 18px;
+  font-weight: 700;
+  margin: 4px 0 12px;
+}
+
+.prepositions-example {
+  align-items: center;
+  border-top: 1px solid #ececf2;
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  padding: 13px 0;
+}
+
+.prepositions-example div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.prepositions-example span {
+  color: #778094;
+  font-size: 13px;
+}
+
+.prepositions-compare {
+  display: grid;
+  gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.prepositions-compare article {
+  background: #fbfcff;
+  border: 1px solid #e5e9f2;
+  border-radius: 14px;
+  padding: 18px;
+}
+
+.prepositions-tag {
+  border-radius: 20px;
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .5px;
+  padding: 6px 9px;
+}
+
+.prepositions-tag.location {
+  background: #e8f6ef;
+  color: #28734d;
+}
+
+.prepositions-tag.direction {
+  background: #fff0e4;
+  color: #a65b20;
+}
+
+.prepositions-compare h3 {
+  margin: 13px 0 8px;
+}
+
+.prepositions-german {
+  color: #594ba6;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.prepositions-compare small {
+  color: #747d8e;
+  display: block;
+  line-height: 1.5;
+  margin: 10px 0 14px;
+}
+
+.prepositions-table-wrap {
+  overflow-x: auto;
+}
+
+.prepositions-table {
+  border-collapse: collapse;
+  min-width: 450px;
+  width: 100%;
+}
+
+.prepositions-table th,
+.prepositions-table td {
+  border-bottom: 1px solid #e9eaf0;
+  padding: 12px;
+  text-align: left;
+}
+
+.prepositions-table th {
+  background: #f7f6fc;
+  color: #5546a5;
+}
+
+.prepositions-practice-heading {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.prepositions-practice-heading p {
+  color: #778094;
+  margin: 0;
+}
+
+.prepositions-practice-heading > span {
+  background: #f0edff;
+  border-radius: 20px;
+  color: #594ba6;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 7px 11px;
+}
+
+.prepositions-question {
+  border-bottom: 1px solid #eceef3;
+  padding: 16px 0;
+}
+
+.prepositions-question h3 {
+  font-size: 15px;
+  margin: 0 0 12px;
+}
+
+.prepositions-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.prepositions-options button {
+  background: #fff;
+  border: 1px solid #dfe3ec;
+  border-radius: 9px;
+  color: #3d485e;
+  cursor: pointer;
+  min-width: 80px;
+  padding: 9px 14px;
+}
+
+.prepositions-options button.chosen {
+  background: #eeeaff;
+  border-color: #8c7bd6;
+  color: #5546a5;
+}
+
+.prepositions-options button.correct {
+  background: #e8f7ee;
+  border-color: #75bd91;
+  color: #216c40;
+}
+
+.prepositions-options button.wrong {
+  background: #fff0f0;
+  border-color: #e39b9b;
+  color: #a33333;
+}
+
+.prepositions-options button:disabled {
+  cursor: default;
+}
+
+.prepositions-feedback {
+  color: #626d80;
+  font-size: 13px;
+  margin: 9px 0 0;
+}
+
+.prepositions-primary-button {
+  background: #6656b5;
+  border: 0;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  margin-top: 18px;
+  padding: 12px 18px;
+}
+
+.prepositions-primary-button:disabled {
+  cursor: not-allowed;
+  opacity: .45;
+}
+
+.prepositions-result {
+  background: #f6f4ff;
+  border-radius: 13px;
+  margin-top: 20px;
+  padding: 18px;
+}
+
+.prepositions-result h3 {
+  margin: 0 0 6px;
+}
+
+.prepositions-result p {
+  margin: 0;
+}
+
+@media (max-width: 650px) {
+  .prepositions-hero {
+    align-items: flex-start;
+    padding: 18px;
+  }
+
+  .prepositions-hero-icon {
+    flex-basis: 52px;
+    font-size: 26px;
+    height: 52px;
+  }
+
+  .prepositions-panel {
+    padding: 17px;
+  }
+
+  .prepositions-guide-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .prepositions-selector {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
