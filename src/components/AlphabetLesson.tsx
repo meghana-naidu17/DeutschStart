@@ -11,12 +11,14 @@ import {
 } from "lucide-react";
 
 import { alphabet, alphabetQuiz } from "../data/alphabet";
+import { useLanguage } from "../context/LanguageContext";
 
 interface Props {
   onComplete: () => void;
 }
 
 function AlphabetLesson({ onComplete }: Props) {
+  const { targetLanguage, currentLanguage, lookupWord } = useLanguage();
   const [selected, setSelected] = useState("A");
   const [quizStarted, setQuizStarted] = useState(false);
   const [questionIndex, setQuestionIndex] = useState(0);
@@ -170,6 +172,22 @@ function AlphabetLesson({ onComplete }: Props) {
                   <span>GERMAN EXAMPLE</span>
                   <h3>{currentLetter.example}</h3>
                   <p>{currentLetter.meaning}</p>
+                  {targetLanguage !== "en" && lookupWord(currentLetter.example)?.translations[targetLanguage] && (
+                    <div style={{ marginTop: "4px", fontSize: "13px", color: "var(--primary)", fontWeight: 700 }}>
+                      {currentLanguage.flag} {lookupWord(currentLetter.example)?.translations[targetLanguage]}
+                    </div>
+                  )}
+                  <div style={{ marginTop: "6px" }}>
+                    <a
+                      href={`https://www.dict.cc/?s=${encodeURIComponent(currentLetter.example)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ fontSize: "11px", color: "#2563eb", textDecoration: "none", fontWeight: 700 }}
+                      title="Verify word on dict.cc"
+                    >
+                      Verify with dict.cc ↗
+                    </a>
+                  </div>
                 </div>
 
                 <button

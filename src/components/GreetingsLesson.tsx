@@ -7,6 +7,7 @@ import {
   MessageCircle,
   BookOpen
 } from "lucide-react";
+import { useLanguage } from "../context/LanguageContext";
 
 interface Greeting {
   german: string;
@@ -215,6 +216,7 @@ function speakGerman(text: string) {
 }
 
 function GreetingsLesson({ onComplete }: Props) {
+  const { targetLanguage, currentLanguage, lookupWord } = useLanguage();
   const [activeTab, setActiveTab] = useState("greetings");
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState("");
@@ -318,30 +320,53 @@ function GreetingsLesson({ onComplete }: Props) {
           </div>
 
           <div className="greetings-grid">
-            {greetings.map((item) => (
-              <article className="greeting-card" key={item.german}>
-                <div>
-                  <span className="greeting-situation">
-                    {item.situation}
-                  </span>
+            {greetings.map((item) => {
+              const clean = item.german.replace(/[!.,?]/g, "").trim();
+              const matched = lookupWord(clean);
+              const trans = matched?.translations[targetLanguage];
 
-                  <h3>{item.german}</h3>
-                  <p>{item.english}</p>
+              return (
+                <article className="greeting-card" key={item.german}>
+                  <div>
+                    <span className="greeting-situation">
+                      {item.situation}
+                    </span>
 
-                  <span className="greeting-pronunciation">
-                    Pronunciation: {item.pronunciation}
-                  </span>
-                </div>
+                    <h3>{item.german}</h3>
+                    <p>{item.english}</p>
 
-                <button
-                  className="greeting-audio"
-                  onClick={() => speakGerman(item.german)}
-                  aria-label={`Listen to ${item.german}`}
-                >
-                  <Volume2 size={19} />
-                </button>
-              </article>
-            ))}
+                    {targetLanguage !== "en" && trans && (
+                      <div style={{ marginTop: "4px", fontSize: "13.5px", color: "var(--primary)", fontWeight: 700 }}>
+                        <span>{currentLanguage.flag} {trans}</span>
+                      </div>
+                    )}
+
+                    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: "6px" }}>
+                      <span className="greeting-pronunciation">
+                        Pronunciation: {item.pronunciation}
+                      </span>
+                      <a
+                        href={`https://www.dict.cc/?s=${encodeURIComponent(clean)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ fontSize: "11px", color: "#2563eb", textDecoration: "none", fontWeight: 700 }}
+                        title="Verify exact word translation on dict.cc"
+                      >
+                        dict.cc ↗
+                      </a>
+                    </div>
+                  </div>
+
+                  <button
+                    className="greeting-audio"
+                    onClick={() => speakGerman(item.german)}
+                    aria-label={`Listen to ${item.german}`}
+                  >
+                    <Volume2 size={19} />
+                  </button>
+                </article>
+              );
+            })}
           </div>
 
           <div className="greeting-note">

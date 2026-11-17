@@ -5,7 +5,6 @@ import {
   Volume2,
   MessageCircle,
   UserRound,
-  BookOpen,
   CheckCircle2,
   RotateCcw,
   ArrowRight,

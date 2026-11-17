@@ -16,6 +16,7 @@ import {
   Trophy,
 } from "lucide-react";
 import "./EverydayLifeVocabularyLesson.css";
+import { useLanguage } from "../context/LanguageContext";
 
 type Props = {
   onComplete: () => void;
@@ -159,6 +160,7 @@ function speak(text: string) {
 }
 
 export default function EverydayLifeVocabularyLesson({ onComplete }: Props) {
+  const { targetLanguage, currentLanguage, lookupWord } = useLanguage();
   const [activeTab, setActiveTab] = useState("Vocabulary");
   const [activeCategory, setActiveCategory] = useState("At Home");
   const [revealedWords, setRevealedWords] = useState<string[]>([]);
@@ -293,11 +295,27 @@ export default function EverydayLifeVocabularyLesson({ onComplete }: Props) {
                   {revealed && (
                     <div className="everyday-word-detail">
                       <strong>{word.english}</strong>
+                      {targetLanguage !== "en" && lookupWord(word.german)?.translations[targetLanguage] && (
+                        <div style={{ color: "var(--primary)", fontWeight: 700, fontSize: "13.5px", marginTop: "2px" }}>
+                          {currentLanguage.flag} {lookupWord(word.german)?.translations[targetLanguage]}
+                        </div>
+                      )}
                       <p className="everyday-example">{word.example}</p>
                       <p>{word.translation}</p>
-                      <button className="everyday-small-audio" onClick={() => speak(word.example)}>
-                        <Volume2 size={15} /> Listen to example
-                      </button>
+                      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: "8px" }}>
+                        <button className="everyday-small-audio" onClick={() => speak(word.example)}>
+                          <Volume2 size={15} /> Listen to example
+                        </button>
+                        <a
+                          href={`https://www.dict.cc/?s=${encodeURIComponent(word.german)}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{ fontSize: "11px", color: "#2563eb", textDecoration: "none", fontWeight: 700 }}
+                          title="Verify word on dict.cc"
+                        >
+                          Verify on dict.cc ↗
+                        </a>
+                      </div>
                     </div>
                   )}
                 </div>
@@ -307,8 +325,10 @@ export default function EverydayLifeVocabularyLesson({ onComplete }: Props) {
           <div className="everyday-tip">
             <Lightbulb size={20} />
             <div>
-              <strong>Remember the article!</strong>
-              <p>Learn every German noun together with its article: der, die, or das. For example, learn „der Tisch“, not only „Tisch“.</p>
+              <strong>Remember the article & verify on dict.cc!</strong>
+              <p>
+                Learn every German noun together with its article: <strong>der</strong>, <strong>die</strong>, or <strong>das</strong>. For 100% verified noun genders, plurals, and accurate translation, always refer to <a href="https://www.dict.cc" target="_blank" rel="noopener noreferrer" style={{ color: "#2563eb", fontWeight: 700 }}>dict.cc ↗</a>.
+              </p>
             </div>
           </div>
         </section>

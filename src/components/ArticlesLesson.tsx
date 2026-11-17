@@ -35,8 +35,6 @@ type ArticleSection = {
   tips: string[];
 };
 
-const caseNames = ["Nominative", "Accusative", "Dative", "Genitive"];
-
 const articleSections: Record<ArticleKind, ArticleSection> = {
   bestimmte: {
     title: "Bestimmte Artikel",

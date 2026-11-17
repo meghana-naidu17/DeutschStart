@@ -26,25 +26,6 @@ const possessives = [
   { owner: "Sie", word: "Ihr", meaning: "your (formal)", example: "Ihr Buch" },
 ];
 
-const endings = [
-  {
-    case: "Nominative",
-    explanation: "The noun is the subject.",
-    masculine: "mein Vater",
-    feminine: "meine Mutter",
-    neuter: "mein Kind",
-    plural: "meine Freunde",
-  },
-  {
-    case: "Accusative",
-    explanation: "The noun is the direct object.",
-    masculine: "meinen Vater",
-    feminine: "meine Mutter",
-    neuter: "mein Kind",
-    plural: "meine Freunde",
-  },
-];
-
 const examples = [
   {
     german: "Das ist mein Bruder.",
