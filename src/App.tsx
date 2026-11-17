@@ -24,7 +24,8 @@ import {
   Zap,
   Repeat,
   MapPin,
-  Star
+  Star,
+  ShoppingBag
 } from "lucide-react";
 
 import { lessons, categories } from "./data/course";
@@ -47,6 +48,7 @@ import TimeDailyRoutineLesson from "./components/TimeDailyRoutineLesson";
 import PrepositionsLesson from "./components/PrepositionsLesson";
 import CasesArticleRevisionLesson from "./components/CasesArticleRevisionLesson";
 import AdjectivesDescriptionsLesson from "./components/AdjectivesDescriptionsLesson";
+import EverydayLifeVocabularyLesson from "./components/EverydayLifeVocabularyLesson";
 
 type Page =
   | "Dashboard"
@@ -69,6 +71,7 @@ type Page =
   | "Prepositions"
   | "Cases & Article Revision"
   | "Adjectives & Descriptions"
+  | "Everyday Life Vocabulary"
   | "Grammar"
   | "Vocabulary"
   | "Listening"
@@ -94,7 +97,8 @@ const interactivePages: Page[] = [
   "Time & Daily Routine",
   "Prepositions",
   "Cases & Article Revision",
-  "Adjectives & Descriptions"
+  "Adjectives & Descriptions",
+  "Everyday Life Vocabulary"
 ];
 
 const navigation = [
@@ -125,7 +129,8 @@ const navigation = [
       { name: "Time & Daily Routine" as Page, icon: Clock },
       { name: "Prepositions" as Page, icon: MapPin },
       { name: "Cases & Article Revision" as Page, icon: BookMarked },
-      { name: "Adjectives & Descriptions" as Page, icon: Star }
+      { name: "Adjectives & Descriptions" as Page, icon: Star },
+      { name: "Everyday Life Vocabulary" as Page, icon: ShoppingBag }
     ]
   },
   {
@@ -166,7 +171,8 @@ const lessonDescriptions: Record<string, string> = {
   "Time & Daily Routine": "Learn to tell the time and describe your everyday routine.",
   Prepositions: "Learn in, an, auf, mit, nach, zu and aus in everyday sentences.",
   "Cases & Article Revision": "Understand nominative, accusative and introductory dative articles.",
-  "Adjectives & Descriptions": "Learn adjective vocabulary and describe people, objects, places and feelings."
+  "Adjectives & Descriptions": "Learn adjective vocabulary and describe people, objects, places and feelings.",
+  "Everyday Life Vocabulary": "Learn useful German words for home, college, food, shopping, travel and daily activities."
 };
 
 const lessonIcons = [
@@ -187,7 +193,8 @@ const lessonIcons = [
   "🕒",
   "📍",
   "⚖️",
-  "⭐"
+  "⭐",
+  "🛍️"
 ];
 
 function App() {
@@ -774,6 +781,13 @@ function App() {
           />
         );
 
+      case "Everyday Life Vocabulary":
+        return (
+          <EverydayLifeVocabularyLesson
+            onComplete={() => markLessonComplete("Everyday Life Vocabulary")}
+          />
+        );
+
       default:
         return null;
     }
@@ -790,6 +804,31 @@ function App() {
         lesson.category.toLowerCase() === activePage.toLowerCase()
     );
 
+    const grammarPages: Page[] = [
+      "Alphabet",
+      "Personal Pronouns",
+      "Articles",
+      "Verbs",
+      "Irregular Verbs",
+      "Sentence Structure",
+      "Negation",
+      "W-Fragen & Ja/Nein-Fragen",
+      "Possessive Articles",
+      "Plural Nouns",
+      "Modal Verbs",
+      "Separable Verbs",
+      "Time & Daily Routine",
+      "Prepositions",
+      "Cases & Article Revision",
+      "Adjectives & Descriptions"
+    ];
+
+    const vocabularyPages: Page[] = [
+      "Greetings",
+      "Numbers & Dates",
+      "Everyday Life Vocabulary"
+    ];
+
     return (
       <div className="page-content">
         <div className="page-heading">
@@ -800,40 +839,34 @@ function App() {
 
         {activePage === "Grammar" && (
           <div className="interactive-lesson-grid">
-            {[
-              "Personal Pronouns",
-              "Articles",
-              "Verbs",
-              "Irregular Verbs",
-              "Sentence Structure",
-              "Negation",
-              "W-Fragen & Ja/Nein-Fragen",
-              "Possessive Articles",
-              "Plural Nouns",
-              "Modal Verbs",
-              "Separable Verbs",
-              "Time & Daily Routine",
-              "Prepositions",
-              "Cases & Article Revision",
-              "Adjectives & Descriptions"
-            ].map((page) => renderInteractiveCard(page as Page))}
+            {grammarPages.map(renderInteractiveCard)}
           </div>
         )}
 
-        {matchingLessons.length > 0 ? (
+        {activePage === "Vocabulary" && (
+          <div className="interactive-lesson-grid">
+            {vocabularyPages.map(renderInteractiveCard)}
+          </div>
+        )}
+
+        {matchingLessons.length > 0 && (
           <div className="lesson-list">
             {matchingLessons.map(renderLessonCard)}
           </div>
-        ) : (
-          <div className="empty-state">
-            <BookOpen size={35} />
-            <h3>No lessons found yet</h3>
-            <p>
-              More {activePage.toLowerCase()} lessons will be added
-              as we build your German course.
-            </p>
-          </div>
         )}
+
+        {matchingLessons.length === 0 &&
+          activePage !== "Grammar" &&
+          activePage !== "Vocabulary" && (
+            <div className="empty-state">
+              <BookOpen size={35} />
+              <h3>No lessons found yet</h3>
+              <p>
+                More {activePage.toLowerCase()} lessons will be added
+                as we build your German course.
+              </p>
+            </div>
+          )}
       </div>
     );
   };

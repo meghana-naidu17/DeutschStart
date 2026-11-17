@@ -1,0 +1,588 @@
+
+.everyday-lesson {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  color: #302b42;
+}
+
+.everyday-hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  padding: 32px;
+  border-radius: 22px;
+  background: linear-gradient(120deg, #f0eaff, #fceefa 55%, #fff2e8);
+}
+
+.everyday-eyebrow {
+  display: inline-block;
+  color: #8063b5;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+}
+
+.everyday-hero h1 {
+  margin: 10px 0;
+  color: #35294b;
+  font-size: clamp(25px, 4vw, 34px);
+}
+
+.everyday-hero p {
+  max-width: 650px;
+  margin: 0;
+  color: #716982;
+  line-height: 1.7;
+}
+
+.everyday-hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 20px;
+}
+
+.everyday-hero-tags span,
+.everyday-list-heading span,
+.everyday-counter {
+  padding: 7px 12px;
+  border-radius: 20px;
+  background: #fff;
+  color: #765ca7;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.everyday-hero-icon {
+  display: grid;
+  flex-shrink: 0;
+  width: 105px;
+  height: 105px;
+  place-items: center;
+  border-radius: 28px;
+  background: #fff;
+  color: #9273c5;
+}
+
+.everyday-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 7px;
+  border: 1px solid #eee8f5;
+  border-radius: 14px;
+  background: #fff;
+}
+
+.everyday-tab {
+  padding: 11px 17px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: #777083;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.everyday-tab.active {
+  background: #eee7fb;
+  color: #704eaa;
+}
+
+.everyday-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.everyday-section h2 {
+  margin: 0;
+  color: #382e4b;
+  font-size: 23px;
+}
+
+.everyday-section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.everyday-section-heading p,
+.everyday-muted {
+  margin: 7px 0 0;
+  color: #817b8d;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.everyday-category-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.everyday-category {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px;
+  border: 1px solid #eee9f4;
+  border-radius: 14px;
+  background: #fff;
+  color: #6c568f;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.everyday-category span {
+  flex: 1;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.everyday-category small {
+  color: #9a93a5;
+  font-size: 11px;
+}
+
+.everyday-category:hover,
+.everyday-category.active {
+  border-color: #c8b4e8;
+  background: #f7f2ff;
+}
+
+.everyday-word-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.everyday-list-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3px;
+}
+
+.everyday-list-heading h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.everyday-word-card {
+  padding: 16px 18px;
+  border: 1px solid #eee9f4;
+  border-radius: 14px;
+  background: #fff;
+}
+
+.everyday-word-main,
+.everyday-verb-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.everyday-german-word {
+  display: block;
+  color: #4f3979;
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.everyday-plural {
+  display: block;
+  margin-top: 4px;
+  color: #938b9e;
+  font-size: 12px;
+}
+
+.everyday-audio {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-width: 38px;
+  min-height: 38px;
+  border: 0;
+  border-radius: 11px;
+  background: #f0eafa;
+  color: #7656ad;
+  cursor: pointer;
+}
+
+.everyday-reveal {
+  margin-top: 12px;
+  padding: 7px 12px;
+  border: 1px solid #e5dcf1;
+  border-radius: 9px;
+  background: #fff;
+  color: #7656ad;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.everyday-word-detail {
+  margin-top: 13px;
+  padding: 13px;
+  border-radius: 11px;
+  background: #faf7ff;
+  color: #62576f;
+}
+
+.everyday-word-detail strong {
+  color: #59417f;
+}
+
+.everyday-word-detail p {
+  margin: 6px 0;
+  font-size: 13px;
+}
+
+.everyday-example {
+  margin-top: 10px !important;
+  color: #45345f;
+  font-weight: 700;
+}
+
+.everyday-small-audio {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  padding: 7px 10px;
+  border: 0;
+  border-radius: 8px;
+  background: #eee7fa;
+  color: #7050a3;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.everyday-tip {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 17px;
+  border: 1px solid #f1e4c9;
+  border-radius: 14px;
+  background: #fffaf0;
+  color: #8b6b34;
+}
+
+.everyday-tip strong {
+  font-size: 14px;
+}
+
+.everyday-tip p {
+  margin: 5px 0 0;
+  color: #82745c;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.everyday-verbs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 13px;
+}
+
+.everyday-verb-card {
+  padding: 18px;
+  border: 1px solid #eee9f4;
+  border-radius: 14px;
+  background: #fff;
+}
+
+.everyday-verb-card strong {
+  color: #553c7d;
+  font-size: 17px;
+}
+
+.everyday-verb-card > span {
+  display: block;
+  margin-top: 4px;
+  color: #91899c;
+  font-size: 13px;
+}
+
+.everyday-verb-card p {
+  margin: 15px 0 5px;
+  color: #49385f;
+  font-weight: 700;
+}
+
+.everyday-verb-card small {
+  color: #898293;
+}
+
+.everyday-practice-card,
+.everyday-quiz-card,
+.everyday-result-card {
+  max-width: 760px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 28px;
+  border: 1px solid #eee8f5;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 8px 30px rgba(65, 44, 95, 0.05);
+}
+
+.everyday-practice-card {
+  text-align: center;
+}
+
+.everyday-practice-card h2 {
+  margin: 17px 0;
+  color: #513a78;
+  font-size: 30px;
+}
+
+.everyday-answer-input {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 22px 0 12px;
+  padding: 14px;
+  border: 1px solid #ded5eb;
+  border-radius: 11px;
+  outline: none;
+  color: #40344f;
+  font-size: 14px;
+}
+
+.everyday-answer-input:focus {
+  border-color: #9c7acb;
+  box-shadow: 0 0 0 3px rgba(156, 122, 203, 0.12);
+}
+
+.everyday-feedback {
+  margin: 12px 0;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.everyday-feedback.correct {
+  background: #edf8f0;
+  color: #32784a;
+}
+
+.everyday-feedback.incorrect {
+  background: #fff0ef;
+  color: #a64a43;
+}
+
+.everyday-practice-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.everyday-primary-button,
+.everyday-secondary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 17px;
+  border: 0;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.everyday-primary-button {
+  background: #8061b3;
+  color: #fff;
+}
+
+.everyday-primary-button:hover {
+  background: #6e50a0;
+}
+
+.everyday-primary-button:disabled,
+.everyday-secondary-button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.everyday-secondary-button {
+  border: 1px solid #e4dced;
+  background: #fff;
+  color: #70539c;
+}
+
+.everyday-progress-track {
+  height: 7px;
+  margin-bottom: 25px;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #f0ebf5;
+}
+
+.everyday-progress-track div {
+  height: 100%;
+  border-radius: inherit;
+  background: #9271c4;
+  transition: width 0.2s ease;
+}
+
+.everyday-quiz-card h2 {
+  margin: 13px 0 20px;
+  font-size: 21px;
+}
+
+.everyday-options {
+  display: grid;
+  gap: 10px;
+}
+
+.everyday-option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px;
+  border: 1px solid #e9e3f0;
+  border-radius: 11px;
+  background: #fff;
+  color: #554b62;
+  text-align: left;
+  cursor: pointer;
+}
+
+.everyday-option:hover,
+.everyday-option.selected {
+  border-color: #bba5df;
+  background: #f7f2ff;
+  color: #63468f;
+}
+
+.everyday-next-button {
+  margin-top: 22px;
+  float: right;
+}
+
+.everyday-result-card {
+  text-align: center;
+}
+
+.everyday-result-card > svg {
+  color: #9874c4;
+}
+
+.everyday-result-card h2 {
+  margin: 12px 0;
+}
+
+.everyday-result-card > p {
+  color: #81798b;
+  line-height: 1.6;
+}
+
+.everyday-result-card .everyday-score {
+  margin: 12px 0;
+  color: #6f50a3;
+  font-size: 38px;
+  font-weight: 800;
+}
+
+.everyday-result-review {
+  display: grid;
+  gap: 10px;
+  margin: 24px 0;
+  text-align: left;
+}
+
+.everyday-review-item {
+  display: flex;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 10px;
+  background: #faf8fc;
+}
+
+.everyday-review-item > span {
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.review-correct {
+  color: #398454;
+}
+
+.review-wrong {
+  color: #bd5c54;
+}
+
+.everyday-review-item strong {
+  color: #4e405e;
+  font-size: 13px;
+}
+
+.everyday-review-item p,
+.everyday-review-item small {
+  display: block;
+  margin: 5px 0 0;
+  color: #81798b;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+@media (max-width: 760px) {
+  .everyday-hero {
+    padding: 23px;
+  }
+
+  .everyday-hero-icon {
+    width: 75px;
+    height: 75px;
+  }
+
+  .everyday-category-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .everyday-hero-icon {
+    display: none;
+  }
+
+  .everyday-category-grid,
+  .everyday-verbs-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .everyday-category {
+    padding: 13px;
+  }
+
+  .everyday-practice-card,
+  .everyday-quiz-card,
+  .everyday-result-card {
+    padding: 19px;
+  }
+
+  .everyday-section-heading {
+    align-items: flex-start;
+  }
+
+  .everyday-tab {
+    flex: 1 1 auto;
+    padding: 10px;
+  }
+}
